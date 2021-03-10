@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CrowdSpace</string>
+    <string name="home">Home</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="crowdspace">Crowdspace</string>
+    <string name="sign_out">Sign out</string>
 </resources>
