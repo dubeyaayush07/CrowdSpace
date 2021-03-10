@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "584373409854",
+    "project_id": "crowd-space",
+    "storage_bucket": "crowd-space.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584373409854:android:c6a809ee2922b37a35d96f",
+        "android_client_info": {
+          "package_name": "com.crowdspace.crowdspace"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "584373409854-98oat1spcg6f3hf5comq8fas4dmb1qsq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.crowdspace.crowdspace",
+            "certificate_hash": "ad789e248237a226d4de0a17cfe039bb59870ea3"
+          }
+        },
+        {
+          "client_id": "584373409854-eheac713oacc4vpaacnthktrnndkh1nc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAY2tq_crWcIrhf755wWxLKOEkunvNbgB0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "584373409854-eheac713oacc4vpaacnthktrnndkh1nc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
