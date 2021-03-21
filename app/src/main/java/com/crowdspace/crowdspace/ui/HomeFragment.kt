@@ -1,7 +1,9 @@
 package com.crowdspace.crowdspace.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -9,8 +11,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.crowdspace.crowdspace.R
 import com.crowdspace.crowdspace.databinding.FragmentHomeBinding
+import com.crowdspace.crowdspace.model.Business
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 
 class HomeFragment : Fragment() {
@@ -20,6 +25,7 @@ class HomeFragment : Fragment() {
     }
 
     private lateinit var binding: FragmentHomeBinding
+    private lateinit var adapter: BusinessAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +54,25 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavView)
         bottomNavigationView.visibility = View.VISIBLE
+        adapter = BusinessAdapter(BusinessAdapter.OnClickListener {
+            Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
+        })
+
+        binding.businessList.adapter = adapter
+        fetchBusinesses()
+    }
+
+
+    private fun fetchBusinesses() {
+        val db = Firebase.firestore
+        db.collection("businesses")
+                .get()
+                .addOnSuccessListener { result ->
+                    adapter.data = result.toObjects(Business::class.java)
+                }
+                .addOnFailureListener { exception ->
+                    Log.w(TAG, "Error getting documents.", exception)
+                }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
