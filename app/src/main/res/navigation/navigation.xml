@@ -25,5 +25,21 @@
             app:destination="@id/mainFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_queueFragment"
+            app:destination="@id/queueFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/queueFragment"
+        android:name="com.crowdspace.crowdspace.ui.QueueFragment"
+        android:label="Queue" >
+        <action
+            android:id="@+id/action_queueFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/queueFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="selectedBusiness"
+            app:argType="com.crowdspace.crowdspace.model.Business" />
     </fragment>
 </navigation>
