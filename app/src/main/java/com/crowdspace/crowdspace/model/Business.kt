@@ -2,19 +2,25 @@ package com.crowdspace.crowdspace.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.firebase.firestore.DocumentId
 
 data class Business(
+        @DocumentId
+        var id: String? = "",
         var name: String? = "",
         var photoUrl: String? = "",
         var queue: List<String?>? = null,
 ): Parcelable {
     constructor(parcel: Parcel) : this(
-            parcel.readString(),
-            parcel.readString(),
-            parcel.createStringArrayList()) {
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.createStringArrayList()
+    ) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(id)
         parcel.writeString(name)
         parcel.writeString(photoUrl)
         parcel.writeStringList(queue)

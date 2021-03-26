@@ -31,7 +31,8 @@ class MainActivity : AppCompatActivity() {
         // Setting Up ActionBar with Navigation Controller
         var appBarConfiguration = AppBarConfiguration(
             topLevelDestinationIds = setOf (
-                R.id.homeFragment
+                R.id.homeFragment,
+                R.id.userFragment
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
