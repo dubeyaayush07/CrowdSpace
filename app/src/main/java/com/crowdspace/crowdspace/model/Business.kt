@@ -10,13 +10,14 @@ data class Business(
         var name: String? = "",
         var photoUrl: String? = "",
         var queue: List<String?>? = null,
+        var status: String? = ""
 ): Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.createStringArrayList()
-    ) {
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readString(),
+            parcel.createStringArrayList(),
+            parcel.readString()) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -24,6 +25,7 @@ data class Business(
         parcel.writeString(name)
         parcel.writeString(photoUrl)
         parcel.writeStringList(queue)
+        parcel.writeString(status)
     }
 
     override fun describeContents(): Int {

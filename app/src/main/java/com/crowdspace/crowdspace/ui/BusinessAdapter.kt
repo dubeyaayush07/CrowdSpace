@@ -39,9 +39,13 @@ class BusinessAdapter(private val onClickListener: OnClickListener): RecyclerVie
         val businessName: TextView = itemView.findViewById(R.id.business_name)
         val businessImgView: ImageView = itemView.findViewById(R.id.business_img)
         val viewBtn: Button = itemView.findViewById(R.id.view_btn)
+        val status: TextView = itemView.findViewById(R.id.status)
+        val size: TextView = itemView.findViewById(R.id.queueSize)
 
         fun bind(item: Business, onClickListener: OnClickListener) {
             businessName.text = item.name
+            status.text = item.status
+            size.text = "Queue Size ${item.queue?.size.toString()}"
             item.photoUrl?.let {
                 val imgUri = it.toUri().buildUpon().scheme("https").build()
                 Glide.with(businessImgView.context)
