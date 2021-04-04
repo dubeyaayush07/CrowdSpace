@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_homeFragment_to_queueFragment"
             app:destination="@id/queueFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_controlCenterFragment"
+            app:destination="@id/controlCenterFragment" />
     </fragment>
     <fragment
         android:id="@+id/queueFragment"
@@ -47,4 +50,17 @@
         android:name="com.crowdspace.crowdspace.ui.UserFragment"
         android:label="@string/dashboard"
         tools:layout="@layout/fragment_user" />
+    <fragment
+        android:id="@+id/controlCenterFragment"
+        android:name="com.crowdspace.crowdspace.ui.ControlCenterFragment"
+        android:label="Control Center" >
+        <action
+            android:id="@+id/action_controlCenterFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/controlCenterFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="selectedBusiness"
+            app:argType="com.crowdspace.crowdspace.model.Business" />
+    </fragment>
 </navigation>

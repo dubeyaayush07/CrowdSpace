@@ -54,8 +54,13 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavView)
         bottomNavigationView.visibility = View.VISIBLE
+        val user = FirebaseAuth.getInstance().currentUser
         adapter = BusinessAdapter(BusinessAdapter.OnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToQueueFragment(it))
+            if (it.adminId == user?.uid) {
+               findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToControlCenterFragment(it))
+            } else {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToQueueFragment(it))
+            }
         })
 
         binding.businessList.adapter = adapter
