@@ -17,6 +17,7 @@ import com.crowdspace.crowdspace.databinding.FragmentQueueBinding
 import com.crowdspace.crowdspace.model.Business
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -27,6 +28,7 @@ class QueueFragment : Fragment() {
 
     private lateinit var binding: FragmentQueueBinding
     private var business: Business? = null
+    private lateinit var collection: CollectionReference
     private var userId: String = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +38,7 @@ class QueueFragment : Fragment() {
                 requireActivity().findViewById(R.id.bottomNavView)
         bottomNavigationView.visibility = View.GONE
         business = QueueFragmentArgs.fromBundle(requireArguments()).selectedBusiness
+        collection = Firebase.firestore.collection("businesses")
         return binding.root
     }
 
@@ -46,7 +49,7 @@ class QueueFragment : Fragment() {
         checkIndex(userId)
 
         binding.addBtn.setOnClickListener { view ->
-            val doc = Firebase.firestore.collection("businesses").document(business!!.id.toString())
+            val doc = collection.document(business!!.id.toString())
             doc.update("queue", FieldValue.arrayUnion(userId)).addOnSuccessListener {
                 doc.get().addOnSuccessListener {
                     business = it.toObject(Business::class.java)
@@ -99,7 +102,7 @@ class QueueFragment : Fragment() {
 
     private fun verify(businessId: String) {
         if (businessId == business?.id) {
-            val doc = Firebase.firestore.collection("businesses").document(business!!.id.toString())
+            val doc = collection.document(business!!.id.toString())
             doc.update("status", "occupied").addOnSuccessListener {
                 doc.get().addOnSuccessListener {
                     business = it.toObject(Business::class.java)
@@ -110,6 +113,9 @@ class QueueFragment : Fragment() {
     }
 
     private fun checkIndex(id: String) {
+
+        if (business == null) return
+
         val index = business!!.queue!!.indexOfFirst {
             it == id
         }
