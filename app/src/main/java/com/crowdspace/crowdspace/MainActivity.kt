@@ -32,7 +32,8 @@ class MainActivity : AppCompatActivity() {
         var appBarConfiguration = AppBarConfiguration(
             topLevelDestinationIds = setOf (
                 R.id.homeFragment,
-                R.id.userFragment
+                R.id.userFragment,
+                R.id.settingsFragment
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

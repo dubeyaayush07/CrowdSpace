@@ -45,7 +45,6 @@ class HomeFragment : Fragment() {
     ): View? {
         (activity as AppCompatActivity).supportActionBar?.show()
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -79,25 +78,5 @@ class HomeFragment : Fragment() {
                     Log.w(TAG, "Error getting documents.", exception)
                 }
     }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        when(item.itemId) {
-            R.id.sign_out -> {
-                FirebaseAuth.getInstance().signOut()
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToMainFragment())
-            }
-        }
-
-        return super.onOptionsItemSelected(item)
-    }
-
-
-
 
 }
