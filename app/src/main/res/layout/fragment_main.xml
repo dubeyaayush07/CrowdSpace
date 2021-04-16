@@ -27,10 +27,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.566" />
 
-        <ImageView
+        <soup.neumorphism.NeumorphImageView
             android:id="@+id/imageView"
             android:layout_width="246dp"
             android:layout_height="216dp"
+            app:neumorph_shadowColorLight="#79d4d4"
+
+            app:neumorph_shadowColorDark="#539090"
             app:layout_constraintBottom_toTopOf="@+id/textView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"

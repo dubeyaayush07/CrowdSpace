@@ -33,6 +33,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
             style="@style/Widget.MaterialComponents.BottomNavigationView"
+            android:background="#66b2b2"
+            app:itemIconTint="@color/white"
+            app:itemTextAppearanceActive="@color/white"
+            app:itemRippleColor="@color/white"
             app:menu="@menu/menu_bottom_main"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

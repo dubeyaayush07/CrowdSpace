@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<soup.neumorphism.NeumorphCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_margin="12dp"
+    android:layout_margin="7dp"
     android:paddingTop="5dp"
-    app:cardBackgroundColor="@color/white"
+    style="@style/NuemorphismCard"
+    app:neumorph_backgroundColor="#e6e6e6"
     app:cardCornerRadius="10dp"
+    app:neumorph_shadowColorDark="#bdbdbd"
+    app:neumorph_shadowColorLight="#f6f6f6"
     app:cardElevation="6dp">
 
     <LinearLayout
@@ -21,11 +24,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <soup.neumorphism.NeumorphImageView
                 android:id="@+id/business_img"
+                style="@style/NuemorphismImage"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
-                android:padding="10dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -74,15 +77,24 @@
 
 
 
-        <com.google.android.material.button.MaterialButton
+        <soup.neumorphism.NeumorphButton
             android:id="@+id/view_btn"
+            style="@style/Widget.Neumorph.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="View"
-            android:layout_margin="5dp"
-            app:rippleColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14sdp"
+            app:neumorph_shadowColorDark="#cdcdcd"
+            app:neumorph_shadowColorLight="#f6f6f6"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            app:neumorph_backgroundColor="#66b2b2"
+            app:neumorph_shapeType="flat"
+            />
 
     </LinearLayout>
 
 
-</com.google.android.material.card.MaterialCardView>
+</soup.neumorphism.NeumorphCardView>
