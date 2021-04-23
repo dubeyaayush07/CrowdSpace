@@ -19,12 +19,13 @@
                     android:id="@+id/textTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_14sdp"
-                    android:layout_marginTop="@dimen/_14sdp"
-                    android:layout_marginEnd="@dimen/_14sdp"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingStart="@dimen/_20sdp"
+                    android:paddingBottom="@dimen/_10sdp"
+                    android:background="#66b2b2"
+                    android:textColor="@color/white"
                     android:text="Dashboard"
-                    android:textColor="@color/primary_text"
-                    android:textSize="@dimen/_24ssp"
+                    android:textSize="@dimen/_20ssp"
                     android:textStyle="bold"
                     app:layout_constraintTop_toTopOf="parent"/>
 
@@ -62,7 +63,7 @@
                              android:layout_width="@dimen/_32sdp"
                              android:layout_height="@dimen/_32sdp"
                              android:src="@drawable/profile_icon"
-                             app:tint="@color/primary"/>
+                             app:tint="@color/dashboard_buttons"/>
                          <TextView
                              android:layout_width="match_parent"
                              android:layout_height="wrap_content"
@@ -140,7 +141,7 @@
                             android:layout_width="@dimen/_32sdp"
                             android:layout_height="@dimen/_32sdp"
                             android:src="@drawable/previousdata_logo"
-                            app:tint="@color/primary"/>
+                            app:tint="@color/dashboard_buttons"/>
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -179,12 +180,12 @@
                             android:layout_width="@dimen/_32sdp"
                             android:layout_height="@dimen/_32sdp"
                             android:src="@drawable/previous_logo"
-                            app:tint="@color/primary"/>
+                            app:tint="@color/dashboard_buttons"/>
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_4sdp"
-                            android:text="Previous Visits"
+                            android:text="Visits"
                             android:textColor="@color/primary_text"
                             android:textSize="@dimen/_14ssp"
                             android:textStyle="bold"/>
@@ -204,8 +205,9 @@
                     android:layout_marginStart="@dimen/_14sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginEnd="@dimen/_14sdp"
+                    android:textSize="@dimen/_16sdp"
                     android:text="Nearby Announcements"
-                    android:textColor="@color/primary_text"
+                    android:textColor="@color/dashboard_buttons"
                     android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@id/cardRun"/>
                 <soup.neumorphism.NeumorphCardView
@@ -215,7 +217,7 @@
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginEnd="@dimen/_8sdp"
                     app:layout_constraintTop_toBottomOf="@+id/textCourses"
-                    app:neumorph_backgroundColor="@color/background"
+                    app:neumorph_backgroundColor="@color/dashboard_buttons"
                     app:neumorph_shadowColorDark="@color/dark_shadow"
                     app:neumorph_shadowColorLight="@color/light_shadow"
                     app:neumorph_shadowElevation="@dimen/_5sdp"
@@ -243,14 +245,16 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:neumorph_shadowElevation="@dimen/_3sdp"
-                            app:neumorph_shapeType="basin">
+                            app:neumorph_shapeType="basin"
+                            app:neumorph_shadowColorLight="#79d4d4"
+                            app:neumorph_shadowColorDark="#539090">
 
                             <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_margin="@dimen/_8sdp"
                                 android:src="@drawable/previous_logo"
-                                android:tint="@color/primary"/>
+                                android:tint="@color/primary_text2"/>
 
                         </soup.neumorphism.NeumorphCardView>
 
@@ -267,7 +271,7 @@
                             android:layout_marginEnd="@dimen/_8sdp"
                             android:layout_marginBottom="@dimen/_2sdp"
                             android:text="You can Attend"
-                            android:textColor="@color/primary_text"
+                            android:textColor="@color/primary_text2"
                             android:textSize="@dimen/_14ssp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@id/guideline"
@@ -281,7 +285,7 @@
                             android:layout_marginEnd="@dimen/_8sdp"
                             android:layout_marginTop="@dimen/_2sdp"
                             android:text="The Cataract Surgery"
-                            android:textColor="@color/secondary_text"
+                            android:textColor="@color/secondary_text2"
                             android:textSize="@dimen/_13ssp"
                             app:layout_constraintEnd_toStartOf="@id/cardRight"
                             app:layout_constraintStart_toEndOf="@id/imageCourse"
