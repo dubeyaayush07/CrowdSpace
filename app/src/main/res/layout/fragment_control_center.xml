@@ -10,6 +10,18 @@
         android:gravity="center"
         android:orientation="vertical">
 
+
+        <ProgressBar
+            android:id="@+id/progress"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-6dp"
+            android:max="100"
+            android:progress="15"
+            android:visibility="gone"
+            android:scaleY="2" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -71,6 +83,14 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:text="Current Patient" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Document"
+            android:visibility="gone"
+            android:id="@+id/view_document"/>
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
