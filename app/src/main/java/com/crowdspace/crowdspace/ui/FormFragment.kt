@@ -173,8 +173,6 @@ class FormFragment : Fragment() {
                     doc.update("queue", FieldValue.arrayUnion(it.id)).addOnSuccessListener {
                         doc.get().addOnSuccessListener { ref ->
                             val result = ref.toObject(Business::class.java)
-                            Snackbar.make(binding.root, "Form submitted successfully", Snackbar.LENGTH_LONG)
-                                    .show()
                             findNavController().navigate(FormFragmentDirections.actionFormFragmentToQueueFragment(result!!))
                         }
                     }
