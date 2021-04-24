@@ -79,13 +79,14 @@ class ControlCenterFragment : Fragment() {
             val doc = businessCollection.document(business!!.id.toString())
             val uid = business?.queue?.get(0)
             doc.update("queue", FieldValue.arrayRemove(uid), "status", "open").addOnSuccessListener {
-                doc.get().addOnSuccessListener {
-                    business = it.toObject(Business::class.java)
-                    update()
+                formCollection.document(uid.toString()).delete().addOnSuccessListener {
+                    doc.get().addOnSuccessListener {
+                        business = it.toObject(Business::class.java)
+                        update()
+                    }
                 }
             }
         }
-
 
     }
 
@@ -138,9 +139,11 @@ class ControlCenterFragment : Fragment() {
                 .addOnSuccessListener {
                     val form = it.toObject(Form::class.java)
                     binding.currentPatient.text = "Current Patient: ${form?.name}"
-                    binding.viewDocument.visibility = View.VISIBLE
-                    binding.viewDocument.setOnClickListener {
-                        downloadAndOpenImage(requireContext(), form?.url.toString())
+                    if (!form?.url.isNullOrBlank()) {
+                        binding.viewDocument.visibility = View.VISIBLE
+                        binding.viewDocument.setOnClickListener {
+                            downloadAndOpenImage(requireContext(), form?.url.toString())
+                        }
                     }
                 }
                 .addOnFailureListener {
