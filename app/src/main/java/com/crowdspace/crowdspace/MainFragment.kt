@@ -67,7 +67,7 @@ class MainFragment : Fragment() {
 
         Handler(Looper.getMainLooper()).postDelayed({
             observeAuthenticationState()
-        }, 1800)
+        }, 1200)
 
     }
 
@@ -77,7 +77,6 @@ class MainFragment : Fragment() {
             when (authenticationState) {
                 LoginViewModel.AuthenticationState.AUTHENTICATED -> {
                     checkUser()
-                    findNavController().navigate(MainFragmentDirections.actionMainFragmentToHomeFragment())
                 }
                 else -> {
                     launchSignInFlow()
@@ -109,14 +108,27 @@ class MainFragment : Fragment() {
             .addOnSuccessListener { document ->
                 if(document.isEmpty) {
                     FirebaseMessaging.getInstance().token
-                            .addOnSuccessListener {
+                            .addOnSuccessListener { it ->
                                 val newUser = User(
                                         uid = user?.uid,
                                         name = user?.displayName,
                                         token = it
                                 )
-                                collection.add(newUser)
+                                collection.add(newUser).addOnSuccessListener { u->
+                                    u.get().addOnSuccessListener { snap->
+                                        val pUser = snap.toObject(User::class.java)
+                                        findNavController().navigate(MainFragmentDirections.actionMainFragmentToProfileFragment(pUser!!))
+                                    }
+                                }
                             }
+                } else  {
+                    val pUser = document.toObjects(User::class.java)[0]
+                    if (pUser.profileId.isNullOrBlank()) {
+                        findNavController().navigate(MainFragmentDirections.actionMainFragmentToProfileFragment(pUser!!))
+                    } else {
+                        findNavController().navigate(MainFragmentDirections.actionMainFragmentToHomeFragment())
+                    }
+
                 }
 
             }
