@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.crowdspace.crowdspace.R
 import com.crowdspace.crowdspace.databinding.FragmentSettingsBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -27,6 +28,8 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavView)
+        bottomNavigationView.visibility = View.VISIBLE
         binding.signOutBtn.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMainFragment())
