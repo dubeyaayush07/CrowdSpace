@@ -9,4 +9,6 @@
     <string name="dashboard">Dashboard</string>
     <string name="not_found_in_queue">Not Found in Queue</string>
     <string name="settings">Settings</string>
+    <string name="once">Once</string>
+
 </resources>

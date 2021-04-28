@@ -6,14 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
+import com.crowdspace.crowdspace.MainFragmentDirections
 import com.crowdspace.crowdspace.R
 import com.crowdspace.crowdspace.databinding.FragmentProfileBinding
 import com.crowdspace.crowdspace.model.Profile
 import com.crowdspace.crowdspace.model.User
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -22,7 +25,7 @@ import com.google.firebase.ktx.Firebase
 class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
-    private lateinit var user: User
+    private lateinit var uid: String
     private lateinit var collection: CollectionReference
 
 
@@ -33,27 +36,27 @@ class ProfileFragment : Fragment() {
             requireActivity().findViewById(R.id.bottomNavView)
         bottomNavigationView.visibility = View.GONE
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        user = ProfileFragmentArgs.fromBundle(requireArguments()).user
+        uid = FirebaseAuth.getInstance().currentUser?.uid.toString()
         collection = Firebase.firestore.collection("profiles")
-        if (!user.profileId.isNullOrBlank()) {
-            collection.document(user.profileId!!).get().addOnSuccessListener {
-                setup(it.toObject(Profile::class.java)!!)
-            }
-
-            binding.saveBtn.setOnClickListener {
-                updateProfile(user.profileId.toString())
-            }
-        } else {
-            binding.saveBtn.setOnClickListener {
-                saveProfile()
+        collection.whereEqualTo("uid", uid).get().addOnSuccessListener {
+            if (it.isEmpty) {
+                binding.saveBtn.setOnClickListener {
+                    saveProfile()
+                }
+            } else {
+                val pro = it.toObjects(Profile::class.java)[0]
+                setup(pro)
+                binding.saveBtn.setOnClickListener {
+                    updateProfile(pro.id.toString())
+                }
             }
         }
-
     }
 
     private fun saveProfile() {
@@ -61,19 +64,11 @@ class ProfileFragment : Fragment() {
                 name = binding.name.text.toString(),
                 height = binding.height.text.toString(),
                 weight = binding.weight.text.toString(),
-                bloodGroup = binding.blood.text.toString()
+                bloodGroup = binding.blood.text.toString(),
+                uid = uid
         )
         collection.add(profile).addOnSuccessListener {
-            Firebase.firestore.collection("users").document(user.id.toString())
-                    .update("profileId", it.id).addOnSuccessListener {
-                        findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToHomeFragment())
-                    }.addOnFailureListener {
-                        Snackbar.make(
-                                binding.root,
-                                "Failed to save your Profile",
-                                Snackbar.LENGTH_LONG
-                        ).show()
-                    }
+            requireActivity().onBackPressed()
         }.addOnFailureListener {
             Snackbar.make(
                     binding.root,
@@ -91,12 +86,6 @@ class ProfileFragment : Fragment() {
     }
 
     private fun updateProfile(id: String) {
-        val profile = Profile(
-                name = binding.name.text.toString(),
-                height = binding.height.text.toString(),
-                weight = binding.weight.text.toString(),
-                bloodGroup = binding.blood.text.toString()
-        )
         collection.document(id).update("name",  binding.name.text.toString(),
                 "height", binding.height.text.toString(),
                 "weight", binding.weight.text.toString(),

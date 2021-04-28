@@ -13,6 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import soup.neumorphism.NeumorphCardView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,17 +50,9 @@ class UserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val profileTxt: TextView = view.findViewById(R.id.userProfile)
+        val profileTxt: NeumorphCardView = view.findViewById(R.id.cardPunch)
         profileTxt.setOnClickListener {
-            val collection = Firebase.firestore.collection("users")
-            val user = FirebaseAuth.getInstance().currentUser
-            collection.whereEqualTo("uid", "${user?.uid}").get()
-                    .addOnSuccessListener {
-                        if (!it.isEmpty) {
-                            val pUser = it.toObjects(User::class.java)[0]
-                            findNavController().navigate(UserFragmentDirections.actionUserFragmentToProfileFragment(pUser!!))
-                        }
-                    }
+            findNavController().navigate(UserFragmentDirections.actionUserFragmentToProfileFragment())
 
         }
     }

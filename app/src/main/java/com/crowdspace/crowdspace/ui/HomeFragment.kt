@@ -1,9 +1,10 @@
 package com.crowdspace.crowdspace.ui
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -61,8 +62,16 @@ class HomeFragment : Fragment() {
             }
         })
 
+
+        val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
+        val once = sharedPref.getBoolean(getString(R.string.once), false)
+        if (!once) {
+            checkProfile(sharedPref)
+        }
+
         binding.businessList.adapter = adapter
         fetchBusinesses()
+
     }
 
 
@@ -75,6 +84,20 @@ class HomeFragment : Fragment() {
                 }
                 .addOnFailureListener { exception ->
                     Log.w(TAG, "Error getting documents.", exception)
+                }
+    }
+
+    private fun checkProfile(sharedPref: SharedPreferences) {
+        val uid = FirebaseAuth.getInstance().currentUser?.uid.toString()
+        Firebase.firestore.collection("profiles")
+                .whereEqualTo("uid", uid).get().addOnSuccessListener {
+                    if (it.isEmpty) {
+                        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment())
+                        with (sharedPref.edit()) {
+                            putBoolean(getString(R.string.once), true)
+                            apply()
+                        }
+                    }
                 }
     }
 

@@ -14,11 +14,6 @@
             app:destination="@id/homeFragment"
             app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_mainFragment_to_profileFragment"
-            app:destination="@id/profileFragment"
-            app:popUpTo="@id/mainFragment"
-            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -36,6 +31,9 @@
         <action
             android:id="@+id/action_homeFragment_to_controlCenterFragment"
             app:destination="@id/controlCenterFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/queueFragment"
@@ -103,14 +101,5 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.crowdspace.crowdspace.ui.ProfileFragment"
-        android:label="Profile" >
-        <argument
-            android:name="user"
-            app:argType="com.crowdspace.crowdspace.model.User" />
-        <action
-            android:id="@+id/action_profileFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/profileFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
+        android:label="Profile" />
 </navigation>
