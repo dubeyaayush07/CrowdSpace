@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference
+        android:key="preference_key"
+        android:title="Sign Out"
+        android:summary="Sign out to swtich accounts or register for a new one" />
+</PreferenceScreen>

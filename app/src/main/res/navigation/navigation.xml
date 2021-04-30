@@ -76,8 +76,7 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.crowdspace.crowdspace.ui.SettingsFragment"
-        android:label="Settings"
-        tools:layout="@layout/fragment_settings" >
+        android:label="Settings">
         <action
             android:id="@+id/action_settingsFragment_to_mainFragment"
             app:destination="@id/mainFragment"

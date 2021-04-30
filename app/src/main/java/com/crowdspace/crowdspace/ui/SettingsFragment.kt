@@ -1,40 +1,29 @@
 package com.crowdspace.crowdspace.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
+import androidx.preference.Preference
+import androidx.preference.PreferenceFragmentCompat
 import com.crowdspace.crowdspace.R
-import com.crowdspace.crowdspace.databinding.FragmentSettingsBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
 
-class SettingsFragment : Fragment() {
+class SettingsFragment : PreferenceFragmentCompat() {
 
-    private lateinit var binding: FragmentSettingsBinding
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        setPreferencesFromResource(R.xml.preference, rootKey)
 
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_settings, container, false)
-        return binding.root
+        val pref = findPreference<Preference>("preference_key")
+        pref?.setOnPreferenceClickListener {
+            signOut()
+            return@setOnPreferenceClickListener true
+        }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavView)
-        bottomNavigationView.visibility = View.VISIBLE
-        binding.signOutBtn.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMainFragment())
-        }
 
+    private fun signOut() {
+        FirebaseAuth.getInstance().signOut()
+        findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMainFragment())
     }
 
 
