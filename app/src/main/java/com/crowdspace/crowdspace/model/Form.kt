@@ -7,8 +7,10 @@ data class Form(
         var id: String? = "",
         var uid: String? = "",
         var bid: String? = "",
+        var bName: String? = "",
         var name: String? = "",
         var condition: String? = "",
         var url: String? = "",
-        var visit: Int? = 0
+        var visit: Int? = 0,
+        var active: Boolean? = true
 )

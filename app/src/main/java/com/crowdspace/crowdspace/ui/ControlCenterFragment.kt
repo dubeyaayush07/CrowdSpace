@@ -79,7 +79,7 @@ class ControlCenterFragment : Fragment() {
             val doc = businessCollection.document(business!!.id.toString())
             val uid = business?.queue?.get(0)
             doc.update("queue", FieldValue.arrayRemove(uid), "status", "open").addOnSuccessListener {
-                formCollection.document(uid.toString()).delete().addOnSuccessListener {
+                formCollection.document(uid.toString()).update("active", false).addOnSuccessListener {
                     doc.get().addOnSuccessListener {
                         business = it.toObject(Business::class.java)
                         update()

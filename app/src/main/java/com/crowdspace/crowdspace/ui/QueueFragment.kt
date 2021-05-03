@@ -49,8 +49,9 @@ class QueueFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val id = FirebaseAuth.getInstance().currentUser?.uid
         Firebase.firestore.collection("forms")
-                .whereEqualTo("uid", id)
                 .whereEqualTo("bid", business?.id)
+                .whereEqualTo("uid", id)
+                .whereEqualTo("active", true)
                 .get().addOnSuccessListener {
                     val objects = it.toObjects(Form::class.java)
                     if (objects.size > 0) {
