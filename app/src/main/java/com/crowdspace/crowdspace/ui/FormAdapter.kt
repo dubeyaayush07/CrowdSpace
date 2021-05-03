@@ -54,6 +54,7 @@ class FormAdapter(private val onClickListener: FormAdapter.OnClickListener) : Re
             } else fileChip.visibility = View.GONE
 
             hospitalChip.setOnClickListener {
+                it.isEnabled = false
                 onClickListener.onClick(item)
             }
         }
