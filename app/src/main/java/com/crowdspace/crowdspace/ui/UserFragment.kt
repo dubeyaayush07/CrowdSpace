@@ -50,10 +50,18 @@ class UserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val profileTxt: NeumorphCardView = view.findViewById(R.id.cardPunch)
-        profileTxt.setOnClickListener {
+
+        view.findViewById<NeumorphCardView>(R.id.cardPunch).setOnClickListener {
             findNavController().navigate(UserFragmentDirections.actionUserFragmentToProfileFragment())
 
+        }
+
+        view.findViewById<NeumorphCardView>(R.id.cardWeight).setOnClickListener {
+            findNavController().navigate(UserFragmentDirections.actionUserFragmentToFormListFragment(true))
+        }
+
+        view.findViewById<NeumorphCardView>(R.id.cardYoga).setOnClickListener {
+            findNavController().navigate(UserFragmentDirections.actionUserFragmentToFormListFragment(false))
         }
     }
 

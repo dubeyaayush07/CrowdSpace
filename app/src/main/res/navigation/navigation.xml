@@ -59,6 +59,9 @@
         <action
             android:id="@+id/action_userFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_formListFragment"
+            app:destination="@id/formListFragment" />
     </fragment>
     <fragment
         android:id="@+id/controlCenterFragment"
@@ -101,4 +104,16 @@
         android:id="@+id/profileFragment"
         android:name="com.crowdspace.crowdspace.ui.ProfileFragment"
         android:label="Profile" />
+    <fragment
+        android:id="@+id/formListFragment"
+        android:name="com.crowdspace.crowdspace.ui.FormListFragment"
+        android:label="Forms"
+        tools:layout="@layout/fragment_form_list" >
+        <argument
+            android:name="active"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_formListFragment_to_queueFragment"
+            app:destination="@id/queueFragment" />
+    </fragment>
 </navigation>

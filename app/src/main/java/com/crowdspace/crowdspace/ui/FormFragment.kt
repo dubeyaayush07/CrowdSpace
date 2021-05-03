@@ -161,6 +161,7 @@ class FormFragment : Fragment() {
         val form = Form(
                 uid = userId,
                 bid = business.id,
+                bName = business.name,
                 name = binding.name.text.toString(),
                 condition = binding.condition.text.toString(),
                 url = url,
