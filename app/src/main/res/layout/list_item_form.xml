@@ -84,7 +84,7 @@
                 android:id="@+id/visit_hospital"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Go to Hospital"
+                android:text="Go to Doctor Page"
                 android:textColor="@color/white"
                 app:chipBackgroundColor="#274060" />
 

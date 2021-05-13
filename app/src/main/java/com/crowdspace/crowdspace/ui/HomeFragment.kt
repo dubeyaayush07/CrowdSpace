@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.crowdspace.crowdspace.R
 import com.crowdspace.crowdspace.databinding.FragmentHomeBinding
 import com.crowdspace.crowdspace.model.Business
+import com.crowdspace.crowdspace.model.Hospital
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -26,7 +28,7 @@ class HomeFragment : Fragment() {
     }
 
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var adapter: BusinessAdapter
+    private lateinit var adapter: HospitalAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,12 +56,8 @@ class HomeFragment : Fragment() {
         val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavView)
         bottomNavigationView.visibility = View.VISIBLE
         val user = FirebaseAuth.getInstance().currentUser
-        adapter = BusinessAdapter(BusinessAdapter.OnClickListener {
-            if (it.adminId == user?.uid) {
-               findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToControlCenterFragment(it))
-            } else {
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToQueueFragment(it))
-            }
+        adapter = HospitalAdapter(HospitalAdapter.OnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToHospitalFragment(it))
         })
 
 
@@ -69,18 +67,18 @@ class HomeFragment : Fragment() {
             checkProfile(sharedPref)
         }
 
-        binding.businessList.adapter = adapter
-        fetchBusinesses()
+        binding.hospitalList.adapter = adapter
+        fetchHospitals()
 
     }
 
 
-    private fun fetchBusinesses() {
+    private fun fetchHospitals() {
         val db = Firebase.firestore
-        db.collection("businesses")
+        db.collection("hospitals")
                 .get()
                 .addOnSuccessListener { result ->
-                    adapter.data = result.toObjects(Business::class.java)
+                    adapter.data = result.toObjects(Hospital::class.java)
                 }
                 .addOnFailureListener { exception ->
                     Log.w(TAG, "Error getting documents.", exception)

@@ -37,9 +37,6 @@ class QueueFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_queue, container, false)
-        val bottomNavigationView: BottomNavigationView =
-                requireActivity().findViewById(R.id.bottomNavView)
-        bottomNavigationView.visibility = View.GONE
         business = QueueFragmentArgs.fromBundle(requireArguments()).selectedBusiness
         collection = Firebase.firestore.collection("businesses")
         return binding.root
@@ -73,18 +70,7 @@ class QueueFragment : Fragment() {
     }
 
     private fun setup() {
-
         binding.businessName.text = business?.name
-
-        business?.photoUrl?.let {
-            val imgUri = it.toUri().buildUpon().scheme("https").build()
-            Glide.with(binding.businessImg.context)
-                    .load(imgUri)
-                    .apply(
-                            RequestOptions()
-                                    .error(R.drawable.ic_broken_image))
-                    .into(binding.businessImg)
-        }
 
     }
 

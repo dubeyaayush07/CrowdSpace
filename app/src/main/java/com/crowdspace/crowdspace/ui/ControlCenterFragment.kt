@@ -92,17 +92,6 @@ class ControlCenterFragment : Fragment() {
 
     private fun setup() {
         binding.businessName.text = business?.name
-
-        business?.photoUrl?.let {
-            val imgUri = it.toUri().buildUpon().scheme("https").build()
-            Glide.with(binding.businessImg.context)
-                    .load(imgUri)
-                    .apply(
-                            RequestOptions()
-                                    .error(R.drawable.ic_broken_image))
-                    .into(binding.businessImg)
-        }
-
     }
 
     private fun update() {
