@@ -1,7 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Preference
+        android:layout="@layout/custom_layout"/>
+
+    <Preference
+        android:key="version"
+        android:title="Version"
+        android:summary="1.0.0"
+        android:icon="@drawable/previousdata_logo"
+        />
+    <SwitchPreferenceCompat
+        android:key="night_mode"
+        android:title="Night Mode"
+        android:summary="Turn on Night Mode"
+        android:icon="@drawable/logo"/>
+
+    <PreferenceCategory
+    android:key="policies"
+    android:title="Policies">
+
+    <Preference
+        android:key="privacy_policy"
+        android:title="Privacy Policy"
+        android:summary="Our Privacy Policies"
+        android:icon="@drawable/common_google_signin_btn_icon_dark"/>
+    <Preference
+        android:key="terms"
+        android:title="Terms of Service"
+        android:summary="Company Terms and Conditions"
+        android:icon="@drawable/visit_logo"/>
+    <Preference
+        android:key="data_policies"
+        android:title="Data Policies"
+        android:summary="User data related policies"
+        android:icon="@drawable/common_google_signin_btn_text_dark"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="contact_help"
+        android:title="User Help">
+
+        <Preference
+            android:key="how_to"
+            android:title="How to Use"
+            android:summary="Tutorial on how to use app"
+            android:icon="@drawable/common_google_signin_btn_icon_dark"/>
+        <Preference
+            android:key="customer_support"
+            android:title="Customer Support"
+            android:summary="Contact Us in case of any queries"
+            android:icon="@drawable/visit_logo"/>
+        <Preference
+            android:key="feedback"
+            android:title="User Feedback"
+            android:summary="User Feedback and Suggestions"
+            android:icon="@drawable/common_google_signin_btn_text_dark"/>
+
+    </PreferenceCategory>
+
     <Preference
         android:key="preference_key"
         android:title="Sign Out"
-        android:summary="Sign out to swtich accounts or register for a new one" />
+        android:summary="Sign out to swtich accounts or register for a new one"
+        android:icon="@drawable/common_google_signin_btn_icon_dark"/>
+
+
 </PreferenceScreen>
