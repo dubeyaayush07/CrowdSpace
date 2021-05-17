@@ -24,8 +24,9 @@
                     android:paddingBottom="@dimen/_10sdp"
                     android:background="#66b2b2"
                     android:textColor="@color/white"
-                    android:text="Dashboard"
-                    android:textSize="@dimen/_20ssp"
+                    android:text="DASHBOARD"
+                    android:letterSpacing="0.05"
+                    android:textSize="@dimen/_18ssp"
                     android:textStyle="bold"
                     app:layout_constraintTop_toTopOf="parent"/>
 
