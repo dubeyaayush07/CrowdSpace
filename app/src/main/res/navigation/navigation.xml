@@ -116,5 +116,22 @@
         <argument
             android:name="selectedHospital"
             app:argType="com.crowdspace.crowdspace.model.Hospital" />
+        <action
+            android:id="@+id/action_hospitalFragment_to_clientFormFragment"
+            app:destination="@id/clientFormFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/clientFormFragment"
+        android:name="com.crowdspace.crowdspace.ui.ClientFormFragment"
+        android:label="Add Client"
+        tools:layout="@layout/fragment_client_form" >
+        <action
+            android:id="@+id/action_clientFormFragment_to_hospitalFragment"
+            app:destination="@id/hospitalFragment"
+            app:popUpTo="@id/hospitalFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="selectedHospital"
+            app:argType="com.crowdspace.crowdspace.model.Hospital" />
     </fragment>
 </navigation>

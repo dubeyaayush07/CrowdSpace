@@ -9,8 +9,8 @@ data class Business(
         var id: String? = "",
         var name: String? = "",
         var hospitalId: String? = "",
-        var queue: List<String?>? = null,
-        var status: String? = "",
+        var queue: List<String?>? =  listOf(),
+        var status: String? = "open",
         var adminId: String? = ""
 ): Parcelable {
         constructor(parcel: Parcel) : this(
