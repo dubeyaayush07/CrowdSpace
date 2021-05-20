@@ -51,11 +51,14 @@ class HospitalFragment : Fragment() {
         })
 
         binding.businessList.adapter = adapter
-        setup()
+        binding.addClinicBtn.setOnClickListener {
+            findNavController().navigate(HospitalFragmentDirections.actionHospitalFragmentToClientFormFragment(hospital))
+        }
+        setup(user?.uid.toString())
         fetchBusinesses()
     }
 
-    private fun setup() {
+    private fun setup(id: String) {
         hospital.photoUrl?.let {
             val imgUri = it.toUri().buildUpon().scheme("https").build()
             Glide.with(binding.hospitalImg.context)
@@ -67,6 +70,9 @@ class HospitalFragment : Fragment() {
         }
 
         binding.hospitalName.text = hospital.name
+        if (id == hospital.adminId) {
+            binding.addClinicBtn.visibility = View.VISIBLE
+        }
     }
 
     private fun fetchBusinesses() {
