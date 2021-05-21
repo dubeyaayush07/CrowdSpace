@@ -2,99 +2,135 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#e6e6e6">
-
-        <TextView
-            android:id="@+id/textTitle"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#66b2b2"
-            android:paddingStart="@dimen/_20sdp"
-            android:paddingTop="@dimen/_10sdp"
-            android:paddingBottom="@dimen/_10sdp"
-            android:text="Hospital"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_20ssp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent"
+            android:background="#e6e6e6">
 
-        <soup.neumorphism.NeumorphImageView
-            android:id="@+id/hospital_img"
-            style="@style/NuemorphismImage"
-            android:layout_width="200dp"
-            android:layout_height="180dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textTitle"
-            tools:src="@tools:sample/backgrounds/scenic" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/textTitle"
-            app:layout_constraintStart_toEndOf="@+id/hospital_img">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textTitle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/hospital_name"
-                android:textColor="#4f5052"
-                android:textSize="16sp"
+                android:background="#66b2b2"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:text="Hospital"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_20ssp"
                 android:textStyle="bold"
-                android:text="Hospital Name" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView4"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#4f5052"
-                android:textSize="13sp"
-                android:layout_marginVertical="8dp"
-                android:text="255 Beds Available" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textTitle">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp">
+
+                    <LinearLayout
+                        android:layout_width="123dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/hospital_img"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/hospital_name"
+                            android:layout_width="match_parent"
+                            android:textAlignment="center"
+                            android:layout_height="wrap_content"
+                            android:text="Hospital Name"
+                            android:textColor="#66b2b2"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_marginVertical="8dp"
+                            android:text="Beds Available"
+                            android:textColor="#4f5052"
+                            android:textSize="13sp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:text="250"
+                            android:textColor="#4f5052"
+                            android:textSize="13sp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_marginVertical="8dp"
+                            android:text="Doctors"
+                            android:textColor="#4f5052"
+                            android:textSize="13sp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="20"
+                            android:textAlignment="center"
+                            android:textColor="#4f5052"
+                            android:textSize="13sp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_marginVertical="8dp"
+                            android:text="NABH Certfied"
+                            android:textColor="#4f5052"
+                            android:textSize="13sp" />
+
+                    </LinearLayout>
+
+                    <soup.neumorphism.NeumorphImageView
+                        android:id="@+id/hospital_img"
+                        style="@style/NuemorphismImage"
+                        android:layout_width="200dp"
+
+                        android:layout_height="180dp"
+                        android:layout_marginStart="23dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@tools:sample/backgrounds/scenic" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/business_list"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#4f5052"
-                android:textSize="13sp"
-                android:layout_marginVertical="8dp"
-                android:text="20 Doctors" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#4f5052"
-                android:textSize="13sp"
-                android:layout_marginVertical="8dp"
-                android:text="NABH Certfied" />
-
-        </LinearLayout>
+                android:background="#e6e6e6"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView4"
+                app:layout_constraintVertical_bias="0.0" />
 
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/business_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#e6e6e6"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/hospital_img" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
