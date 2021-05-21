@@ -22,93 +22,154 @@
 
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_2sdp"
-            android:layout_marginLeft="@dimen/_5sdp"
+
             android:layout_marginRight="@dimen/_5sdp"
             android:gravity="center"
-            android:layout_height="wrap_content">
+            android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp">
+                android:layout_height="wrap_content">
 
 
                 <TextView
                     android:id="@+id/business_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="sans-serif"
+                    android:letterSpacing="0.05"
                     android:text="@string/name"
                     android:textColor="#66b2b2"
-                    android:fontFamily="sans-serif"
                     android:textSize="18sp"
-                    android:letterSpacing="0.05"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.469"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="0.49"
+                    app:layout_constraintStart_toEndOf="@+id/hospital_img"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="28dp"
                     android:text="Status:"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/status"
+                    app:layout_constraintStart_toEndOf="@+id/queueSize"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.902" />
+                    app:layout_constraintVertical_bias="0.475" />
 
                 <TextView
                     android:id="@+id/status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
+                    android:layout_marginEnd="16dp"
                     android:text="Status"
                     android:textAllCaps="true"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView3"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.926" />
+                    app:layout_constraintVertical_bias="0.475" />
 
                 <TextView
                     android:id="@+id/queueSize"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="48dp"
                     android:text="Queue Size: 0"
                     android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.049"
+                    app:layout_constraintStart_toEndOf="@+id/hospital_img"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="2dp"
+                    app:layout_constraintHorizontal_bias="0.255"
+                    app:layout_constraintStart_toEndOf="@+id/hospital_img"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#6F8FAF"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_11sdp"
+                        android:text="Cancer" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#6F8FAF"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_11sdp"
+                        android:text="Physiotherapy" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+                <soup.neumorphism.NeumorphImageView
+                    android:id="@+id/hospital_img"
+                    style="@style/NuemorphismImage"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/logo_main"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.88" />
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 
-
-
-        <soup.neumorphism.NeumorphButton
-            android:id="@+id/view_btn"
-            style="@style/Widget.Neumorph.Button"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="View"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_14sdp"
-            android:letterSpacing="0.1"
-            app:neumorph_shadowColorDark="#cdcdcd"
-            app:neumorph_shadowColorLight="#f6f6f6"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            app:neumorph_backgroundColor="#66b2b2"
-            app:neumorph_shapeType="flat"
-            />
+            android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="MD Medicine"
+                    app:layout_constraintEnd_toStartOf="@+id/view_btn"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <soup.neumorphism.NeumorphButton
+                    android:id="@+id/view_btn"
+                    style="@style/Widget.Neumorph.Button"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:letterSpacing="0.1"
+                    android:text="View"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:neumorph_backgroundColor="#66b2b2"
+                    app:neumorph_shadowColorDark="#cdcdcd"
+                    app:neumorph_shadowColorLight="#f6f6f6"
+                    app:neumorph_shapeType="flat" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     </LinearLayout>
 
