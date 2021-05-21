@@ -11,11 +11,13 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.crowdspace.crowdspace.R
 import com.crowdspace.crowdspace.databinding.FragmentHomeBinding
 import com.crowdspace.crowdspace.model.Business
 import com.crowdspace.crowdspace.model.Hospital
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -55,11 +57,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavView)
         bottomNavigationView.visibility = View.VISIBLE
-        val user = FirebaseAuth.getInstance().currentUser
-        adapter = HospitalAdapter(HospitalAdapter.OnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToHospitalFragment(it))
-        })
-
 
         val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
         val once = sharedPref.getBoolean(getString(R.string.once), false)
@@ -67,23 +64,21 @@ class HomeFragment : Fragment() {
             checkProfile(sharedPref)
         }
 
-        binding.hospitalList.adapter = adapter
-        fetchHospitals()
+        val tabLayout = binding.tabLayout
+
+        val adapter = PagerAdapter(this)
+        binding.pager.adapter = adapter
+
+        TabLayoutMediator(tabLayout, binding.pager) { tab, position ->
+            when (position) {
+                0 -> tab.text = "Hospitals"
+                1 -> tab.text = "Appointments"
+            }
+        }.attach()
+
 
     }
 
-
-    private fun fetchHospitals() {
-        val db = Firebase.firestore
-        db.collection("hospitals")
-                .get()
-                .addOnSuccessListener { result ->
-                    adapter.data = result.toObjects(Hospital::class.java)
-                }
-                .addOnFailureListener { exception ->
-                    Log.w(TAG, "Error getting documents.", exception)
-                }
-    }
 
     private fun checkProfile(sharedPref: SharedPreferences) {
         val uid = FirebaseAuth.getInstance().currentUser?.uid.toString()
@@ -97,6 +92,17 @@ class HomeFragment : Fragment() {
                         }
                     }
                 }
+    }
+
+    class PagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+
+        override fun getItemCount(): Int = 2
+
+        override fun createFragment(position: Int): Fragment {
+            // Return a NEW fragment instance in createFragment(int)
+            return if (position == 0) HospitalListFragment()
+            else AppointmentListFragment()
+        }
     }
 
 }

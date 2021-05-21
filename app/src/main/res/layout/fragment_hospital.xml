@@ -38,6 +38,7 @@
                     android:paddingTop="20dp"
                     android:paddingBottom="20dp">
 
+
                     <LinearLayout
                         android:layout_width="123dp"
                         android:layout_height="wrap_content"
@@ -56,6 +57,14 @@
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
+            <com.google.android.material.button.MaterialButton
+                android:text="Add Clinic"
+                android:id="@+id/add_clinic_btn"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -64,6 +73,7 @@
                             android:text="Beds Available"
                             android:textColor="#4f5052"
                             android:textSize="13sp" />
+
 
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="match_parent"
@@ -117,18 +127,20 @@
             </androidx.cardview.widget.CardView>
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/business_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#e6e6e6"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView4"
-                app:layout_constraintVertical_bias="0.0" />
+          
+           
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/business_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="#e6e6e6"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hospital_img" />
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

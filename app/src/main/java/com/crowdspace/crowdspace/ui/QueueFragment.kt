@@ -36,6 +36,9 @@ class QueueFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        val bottomNavigationView: BottomNavigationView =
+            requireActivity().findViewById(R.id.bottomNavView)
+        bottomNavigationView.visibility = View.GONE
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_queue, container, false)
         business = QueueFragmentArgs.fromBundle(requireArguments()).selectedBusiness
         collection = Firebase.firestore.collection("businesses")
