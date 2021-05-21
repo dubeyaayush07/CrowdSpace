@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_homeFragment_to_hospitalFragment"
             app:destination="@id/hospitalFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_queueFragment"
+            app:destination="@id/queueFragment" />
     </fragment>
     <fragment
         android:id="@+id/queueFragment"
