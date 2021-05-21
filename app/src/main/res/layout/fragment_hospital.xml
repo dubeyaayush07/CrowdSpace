@@ -127,19 +127,16 @@
             </androidx.cardview.widget.CardView>
 
 
-          
-           
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/business_list"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="#e6e6e6"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/hospital_img" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/business_list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="#e6e6e6"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textTitle"
+                app:layout_constraintTop_toBottomOf="@+id/cardView4" />
 
 
 
