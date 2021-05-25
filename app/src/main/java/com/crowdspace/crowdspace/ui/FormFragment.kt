@@ -157,6 +157,7 @@ class FormFragment : Fragment() {
 
 
     private fun saveForm(userId: String) {
+        binding.submitBtn.isEnabled = false
         val collection = Firebase.firestore.collection("forms")
         val form = Form(
                 uid = userId,
@@ -176,10 +177,17 @@ class FormFragment : Fragment() {
                             val result = ref.toObject(Business::class.java)
                             findNavController().navigate(FormFragmentDirections.actionFormFragmentToQueueFragment(result!!))
                         }
+                    }.addOnFailureListener {
+                        Snackbar.make(binding.root, "Form submission failed", Snackbar.LENGTH_LONG)
+                                .show()
+
+                        binding.submitBtn.isEnabled = true
                     }
                 }.addOnFailureListener {
                     Snackbar.make(binding.root, "Form submission failed", Snackbar.LENGTH_LONG)
                             .show()
+
+                    binding.submitBtn.isEnabled = true
                 }
     }
 
