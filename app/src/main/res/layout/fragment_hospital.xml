@@ -22,7 +22,7 @@
                 android:paddingBottom="@dimen/_10sdp"
                 android:text="HOSPITAL"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_20ssp"
+                android:textSize="@dimen/_18ssp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
