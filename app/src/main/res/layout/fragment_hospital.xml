@@ -63,10 +63,15 @@
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
-            <com.google.android.material.button.MaterialButton
+            <soup.neumorphism.NeumorphButton
                 android:text="Add Clinic"
+                style="@style/Widget.Neumorph.Button"
                 android:id="@+id/add_clinic_btn"
+                app:neumorph_backgroundColor="@color/white"
+                android:textColor="#66b2b2"
                 android:visibility="gone"
+                app:neumorph_shadowColorLight="#66b2b2"
+                app:neumorph_shadowColorDark="#66b2b2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
