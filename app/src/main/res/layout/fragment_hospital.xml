@@ -2,6 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -15,7 +20,7 @@
                 android:paddingStart="@dimen/_20sdp"
                 android:paddingTop="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_10sdp"
-                android:text="Hospital"
+                android:text="HOSPITAL"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_20ssp"
                 android:textStyle="bold"
@@ -36,6 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="20dp"
+                    android:background="#66b2b2"
                     android:paddingBottom="20dp">
 
 
@@ -53,7 +59,7 @@
                             android:textAlignment="center"
                             android:layout_height="wrap_content"
                             android:text="Hospital Name"
-                            android:textColor="#66b2b2"
+                            android:textColor="@color/white"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
@@ -71,7 +77,7 @@
                             android:textAlignment="center"
                             android:layout_marginVertical="8dp"
                             android:text="Beds Available"
-                            android:textColor="#4f5052"
+                            android:textColor="@color/white"
                             android:textSize="13sp" />
 
 
@@ -80,7 +86,7 @@
                             android:layout_height="wrap_content"
                             android:textAlignment="center"
                             android:text="250"
-                            android:textColor="#4f5052"
+                            android:textColor="@color/white"
                             android:textSize="13sp" />
 
                         <com.google.android.material.textview.MaterialTextView
@@ -89,7 +95,7 @@
                             android:textAlignment="center"
                             android:layout_marginVertical="8dp"
                             android:text="Doctors"
-                            android:textColor="#4f5052"
+                            android:textColor="@color/white"
                             android:textSize="13sp" />
 
                         <com.google.android.material.textview.MaterialTextView
@@ -97,7 +103,7 @@
                             android:layout_height="wrap_content"
                             android:text="20"
                             android:textAlignment="center"
-                            android:textColor="#4f5052"
+                            android:textColor="@color/white"
                             android:textSize="13sp" />
 
                         <com.google.android.material.textview.MaterialTextView
@@ -106,7 +112,7 @@
                             android:textAlignment="center"
                             android:layout_marginVertical="8dp"
                             android:text="NABH Certfied"
-                            android:textColor="#4f5052"
+                            android:textColor="@color/white"
                             android:textSize="13sp" />
 
                     </LinearLayout>
@@ -130,7 +136,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/business_list"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:background="#e6e6e6"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -141,5 +147,5 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
+    </ScrollView>
 </layout>

@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <Preference
-        android:layout="@layout/custom_layout"/>
+        android:layout="@layout/custom_layout" />
 
     <Preference
         android:key="version"
