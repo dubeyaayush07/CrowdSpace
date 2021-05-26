@@ -20,6 +20,22 @@
             android:visibility="gone"
             android:scaleY="2" />
 
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#66b2b2"
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:text="BOOK APPOINTMENT"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_20ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -78,7 +94,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:hint="Days since your last visit"
+            android:hint="Days since problem persists"
             android:textColorHint="#7D818A"
             app:helperTextTextColor="#7D818A"
             app:placeholderTextColor="#7D818A"
@@ -107,32 +123,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginBottom="35dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="35dp"
                 android:text="File not uploaded"
-                android:textColor="@color/black"
+                android:textColor="#66b2b2"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:text="If any Previous Medical Paper Upload here"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/status"
+                app:layout_constraintVertical_bias="1.0" />
 
-            <com.google.android.material.button.MaterialButton
+            <soup.neumorphism.NeumorphButton
                 android:id="@+id/upload"
+                style="@style/Widget.Neumorph.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
                 android:text="Upload"
+                android:textColor="@color/white"
+                app:neumorph_backgroundColor="#66b2b2"
+                android:textSize="@dimen/_12sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -140,14 +160,22 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.android.material.button.MaterialButton
+        <soup.neumorphism.NeumorphButton
             android:id="@+id/submit_btn"
+            style="@style/Widget.Neumorph.Button"
+            android:letterSpacing="0.1"
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="18dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Submit"
             app:rippleColor="@color/white"
+            app:neumorph_backgroundColor="#66b2b2"
+            app:neumorph_shadowColorDark="#cdcdcd"
+            app:neumorph_shadowColorLight="#f6f6f6"
+            app:neumorph_shapeType="flat"
             />
 
     </LinearLayout>

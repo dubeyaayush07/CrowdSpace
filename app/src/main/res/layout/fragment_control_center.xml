@@ -5,10 +5,26 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:gravity="top"
+        android:orientation="vertical"
+        android:background="#f0f2f5">
+
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#66b2b2"
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:text="QUEUE"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_20ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <ProgressBar
@@ -25,45 +41,63 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_margin="10dp"
+            android:layout_marginTop="20dp"
             android:gravity="center"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
 
             <TextView
                 android:id="@+id/business_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="450"
                 android:text="@string/name"
-                android:textColor="#4f5052"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textColor="#66b2b2"
+                android:textSize="22.5dp"
+                android:textStyle="bold"
+                />
 
             <TextView
                 android:id="@+id/queueSize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
-                android:text="Queue Size 0" />
+                android:textSize="15.5sp"
+                android:layout_marginBottom="20dp"
+                android:text="Queue Size 0"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15.5sp"
+                android:text="Clinic Status" />
 
             <TextView
                 android:id="@+id/status"
                 android:layout_width="wrap_content"
                 android:textAllCaps="true"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:text="Status" />
+                android:textSize="15sp"
+                android:fontFamily="sans-serif-light"
+                android:textFontWeight="600"
+                android:textColor="#66b2b2"
+                android:layout_marginBottom="20dp"
+                android:text="Status"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/currentPatient"
+                android:fontFamily="sans-serif-light"
+                android:layout_margin="5dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="Current Patient" />
 
         </LinearLayout>
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/currentPatient"
-            android:layout_margin="5dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:text="Current Patient" />
 
 
         <com.google.android.material.button.MaterialButton
