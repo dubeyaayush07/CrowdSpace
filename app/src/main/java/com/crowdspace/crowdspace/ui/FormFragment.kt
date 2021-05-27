@@ -1,3 +1,6 @@
+
+
+
 package com.crowdspace.crowdspace.ui
 
 import android.app.Activity
@@ -134,6 +137,22 @@ class FormFragment : Fragment() {
                 ).show()
                 return false
             }
+            binding.height.text.isNullOrBlank() -> {
+                Snackbar.make(
+                        binding.root,
+                        "Height Required",
+                        Snackbar.LENGTH_LONG
+                ).show()
+                return false
+            }
+            binding.weight.text.isNullOrBlank() -> {
+                Snackbar.make(
+                        binding.root,
+                        "Weight Required",
+                        Snackbar.LENGTH_LONG
+                ).show()
+                return false
+            }
             binding.condition.text.isNullOrBlank() -> {
                 Snackbar.make(
                         binding.root,
@@ -145,7 +164,7 @@ class FormFragment : Fragment() {
             binding.visit.text.isNullOrBlank() -> {
                 Snackbar.make(
                         binding.root,
-                        "Days before visti required",
+                        "Days before visit required",
                         Snackbar.LENGTH_LONG
                 ).show()
                 return false
@@ -164,6 +183,8 @@ class FormFragment : Fragment() {
                 bid = business.id,
                 bName = business.name,
                 name = binding.name.text.toString(),
+                height = binding.height.text.toString(),
+                weight = binding.weight.text.toString(),
                 condition = binding.condition.text.toString(),
                 url = url,
                 visit = binding.visit.text.toString().toInt()

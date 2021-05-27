@@ -50,6 +50,7 @@ class HospitalListFragment : Fragment() {
             .get()
             .addOnSuccessListener { result ->
                 adapter.data = result.toObjects(Hospital::class.java)
+                binding.progressBar.visibility = View.GONE
             }
             .addOnFailureListener { exception ->
                 Log.w(HomeFragment.TAG, "Error getting documents.", exception)

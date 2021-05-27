@@ -99,20 +99,25 @@ class QueueFragment : Fragment() {
 
     private fun verify(businessId: String) {
         if (businessId == business?.id) {
+            binding.scanBtn.visibility = View.GONE
             val doc = collection.document(business!!.id.toString())
             doc.update("status", "occupied").addOnSuccessListener {
                 doc.get().addOnSuccessListener {
                     business = it.toObject(Business::class.java)
                     checkIndex(formId)
+                }.addOnFailureListener {
+                    binding.scanBtn.visibility = View.VISIBLE
+                    Toast.makeText(context, "Operation Failed Please Try Again", Toast.LENGTH_LONG).show()
                 }
             }
+        } else {
+            Toast.makeText(context, "Invalid Code", Toast.LENGTH_LONG).show()
         }
     }
 
     private fun checkIndex(id: String) {
 
         if (business == null) return
-
         val index = business!!.queue!!.indexOfFirst {
             it == id
         }

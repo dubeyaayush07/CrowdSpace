@@ -65,6 +65,9 @@
         <argument
             android:name="selectedBusiness"
             app:argType="com.crowdspace.crowdspace.model.Business" />
+        <action
+            android:id="@+id/action_controlCenterFragment_to_formDisplayFragment"
+            app:destination="@id/formDisplayFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -136,5 +139,13 @@
         <argument
             android:name="selectedHospital"
             app:argType="com.crowdspace.crowdspace.model.Hospital" />
+    </fragment>
+    <fragment
+        android:id="@+id/formDisplayFragment"
+        android:name="com.crowdspace.crowdspace.ui.FormDisplayFragment"
+        android:label="FormDisplayFragment" >
+        <argument
+            android:name="selectedForm"
+            app:argType="com.crowdspace.crowdspace.model.Form" />
     </fragment>
 </navigation>

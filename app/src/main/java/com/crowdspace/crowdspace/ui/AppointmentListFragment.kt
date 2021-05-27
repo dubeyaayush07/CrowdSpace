@@ -58,7 +58,8 @@ class AppointmentListFragment : Fragment() {
             .whereEqualTo("uid", uid)
             .whereEqualTo("active", active)
             .get().addOnSuccessListener { result ->
-                adapter.data = result.toObjects(Form::class.java)
+                    binding.progressBar.visibility = View.GONE
+                    adapter.data = result.toObjects(Form::class.java)
             }.addOnFailureListener { exception ->
                 Log.w(FormListFragment.TAG, "Error getting documents.", exception)
             }
