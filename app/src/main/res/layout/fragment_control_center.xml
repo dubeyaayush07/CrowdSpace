@@ -10,6 +10,7 @@
         android:orientation="vertical"
         android:background="#f0f2f5">
 
+
         <TextView
             android:id="@+id/textTitle"
             android:layout_width="match_parent"
@@ -18,7 +19,7 @@
             android:paddingStart="@dimen/_20sdp"
             android:paddingTop="@dimen/_10sdp"
             android:paddingBottom="@dimen/_10sdp"
-            android:text="QUEUE"
+            android:text="Control Center"
             android:textColor="@color/white"
             android:textSize="@dimen/_20ssp"
             android:textStyle="bold"
@@ -45,6 +46,11 @@
             android:gravity="center"
             android:layout_height="wrap_content"
             >
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/shareQr"/>
 
             <TextView
                 android:id="@+id/business_name"
@@ -91,10 +97,22 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/currentPatient"
                 android:fontFamily="sans-serif-light"
+                android:gravity="center"
                 android:layout_margin="5dp"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:text="Current Patient" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/timePatient"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:layout_margin="5dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="Timestamp" />
 
         </LinearLayout>
 
@@ -103,9 +121,9 @@
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="View Document"
+            android:text="View Patient Information"
             android:visibility="gone"
-            android:id="@+id/view_document"/>
+            android:id="@+id/view_info"/>
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
