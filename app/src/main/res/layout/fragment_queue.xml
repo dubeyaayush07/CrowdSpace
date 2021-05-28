@@ -71,13 +71,14 @@
                 android:layout_marginBottom="20dp"
                 android:text="Status" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
                 android:id="@+id/index"
+                android:gravity="center"
                 android:layout_margin="5dp"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:text="@string/not_found_in_queue" />
 

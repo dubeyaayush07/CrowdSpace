@@ -69,6 +69,58 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:hint="Height in centimeter"
+            android:textColorHint="#7D818A"
+            app:helperTextTextColor="#7D818A"
+            app:placeholderTextColor="#7D818A"
+            app:hintTextColor="#66b2b2"
+            app:boxStrokeColor="#66b2b2"
+            app:boxStrokeWidth="2dp"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/height"
+                android:textFontWeight="450"
+                android:fontFamily="sans-serif-light"
+                android:textColor="#3b3c36"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:hint="Weight in kilograms"
+            android:textColorHint="#7D818A"
+            app:helperTextTextColor="#7D818A"
+            app:placeholderTextColor="#7D818A"
+            app:hintTextColor="#66b2b2"
+            app:boxStrokeColor="#66b2b2"
+            app:boxStrokeWidth="2dp"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/weight"
+                android:textFontWeight="450"
+                android:fontFamily="sans-serif-light"
+                android:textColor="#3b3c36"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:hint="Describe your condition"
             android:textColorHint="#7D818A"
             app:helperTextTextColor="#7D818A"

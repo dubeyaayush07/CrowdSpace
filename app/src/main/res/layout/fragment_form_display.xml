@@ -10,7 +10,6 @@
         android:orientation="vertical"
         android:background="#f0f2f5">
 
-
         <TextView
             android:id="@+id/textTitle"
             android:layout_width="match_parent"
@@ -19,7 +18,7 @@
             android:paddingStart="@dimen/_20sdp"
             android:paddingTop="@dimen/_10sdp"
             android:paddingBottom="@dimen/_10sdp"
-            android:text="Control Center"
+            android:text="Patient Information"
             android:textColor="@color/white"
             android:textSize="@dimen/_20ssp"
             android:textStyle="bold"
@@ -47,13 +46,8 @@
             android:layout_height="wrap_content"
             >
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:id="@+id/shareQr"/>
-
             <TextView
-                android:id="@+id/business_name"
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
@@ -65,22 +59,73 @@
                 android:textStyle="bold"
                 />
 
+
             <TextView
-                android:id="@+id/queueSize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15.5sp"
+                android:text="Condition" />
+
+            <TextView
+                android:id="@+id/condition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:fontFamily="sans-serif-light"
+                android:textFontWeight="600"
+                android:textColor="#66b2b2"
                 android:layout_marginBottom="20dp"
-                android:text="Queue Size 0"/>
+                android:text="condition"
+                />
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15.5sp"
-                android:text="Clinic Status" />
+                android:text="Height" />
 
             <TextView
-                android:id="@+id/status"
+                android:id="@+id/height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:fontFamily="sans-serif-light"
+                android:textFontWeight="600"
+                android:textColor="#66b2b2"
+                android:layout_marginBottom="20dp"
+                android:text="12"
+                />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15.5sp"
+                android:text="Weight" />
+
+            <TextView
+                android:id="@+id/weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:fontFamily="sans-serif-light"
+                android:textFontWeight="600"
+                android:textColor="#66b2b2"
+                android:layout_marginBottom="20dp"
+                android:text="12"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15.5sp"
+                android:text="Days symptoms experienced" />
+
+            <TextView
+                android:id="@+id/days"
                 android:layout_width="wrap_content"
                 android:textAllCaps="true"
                 android:layout_height="wrap_content"
@@ -89,30 +134,10 @@
                 android:textFontWeight="600"
                 android:textColor="#66b2b2"
                 android:layout_marginBottom="20dp"
-                android:text="Status"
+                android:text="0"
                 />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/currentPatient"
-                android:fontFamily="sans-serif-light"
-                android:gravity="center"
-                android:layout_margin="5dp"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:text="Current Patient" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/timePatient"
-                android:fontFamily="sans-serif-light"
-                android:gravity="center"
-                android:layout_margin="5dp"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:text="Timestamp" />
 
         </LinearLayout>
 
@@ -121,31 +146,10 @@
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="View Patient Information"
+            android:text="Open Attached Document"
             android:visibility="gone"
-            android:id="@+id/view_info"/>
+            android:id="@+id/openDocument"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Open Clinic"
-            android:visibility="gone"
-            android:id="@+id/openBtn"/>
-
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Close Clinic"
-            android:visibility="gone"
-            android:id="@+id/closeBtn"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Next Patient"
-            android:visibility="gone"
-            android:id="@+id/next"/>
 
 
     </LinearLayout>
