@@ -2,6 +2,7 @@ package com.crowdspace.crowdspace.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,9 +31,14 @@ import java.util.*
 class QueueFragment : Fragment() {
 
     private lateinit var binding: FragmentQueueBinding
-    private var business: Business? = null
+    private lateinit  var business: Business
     private lateinit var collection: CollectionReference
     private var formId: String = ""
+
+
+    companion object {
+        const val TAG = "QueueFragment"
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -49,7 +55,7 @@ class QueueFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val id = FirebaseAuth.getInstance().currentUser?.uid
         Firebase.firestore.collection("forms")
-                .whereEqualTo("bid", business?.id)
+                .whereEqualTo("bid", business.id)
                 .whereEqualTo("uid", id)
                 .whereEqualTo("active", true)
                 .get().addOnSuccessListener {
@@ -63,17 +69,35 @@ class QueueFragment : Fragment() {
 
 
         binding.addBtn.setOnClickListener { view ->
-            findNavController().navigate(QueueFragmentDirections.actionQueueFragmentToFormFragment(business!!))
+            findNavController().navigate(QueueFragmentDirections.actionQueueFragmentToFormFragment(business))
         }
 
         binding.scanBtn.setOnClickListener {
             scanQRCode()
         }
 
+
+        val docRef = collection.document(business.id.toString())
+        docRef.addSnapshotListener { snapshot, e ->
+            if (e != null) {
+                Log.w(TAG, "Listen failed.", e)
+                return@addSnapshotListener
+            }
+
+            if (snapshot != null && snapshot.exists()) {
+                business = snapshot.toObject(Business::class.java)!!
+                checkIndex(formId)
+
+            } else {
+                Log.d(TAG, "Current data: null")
+            }
+        }
+
+
     }
 
     private fun setup() {
-        binding.businessName.text = business?.name
+        binding.businessName.text = business.name
 
     }
 
@@ -98,17 +122,11 @@ class QueueFragment : Fragment() {
     }
 
     private fun verify(businessId: String) {
-        if (businessId == business?.id) {
+        if (businessId == business.id) {
             binding.scanBtn.visibility = View.GONE
-            val doc = collection.document(business!!.id.toString())
-            doc.update("status", "occupied").addOnSuccessListener {
-                doc.get().addOnSuccessListener {
-                    business = it.toObject(Business::class.java)
-                    checkIndex(formId)
-                }.addOnFailureListener {
-                    binding.scanBtn.visibility = View.VISIBLE
-                    Toast.makeText(context, "Operation Failed Please Try Again", Toast.LENGTH_LONG).show()
-                }
+            val doc = collection.document(business.id.toString())
+            doc.update("status", "occupied").addOnFailureListener {
+                binding.scanBtn.visibility = View.VISIBLE
             }
         } else {
             Toast.makeText(context, "Invalid Code", Toast.LENGTH_LONG).show()

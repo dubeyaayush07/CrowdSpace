@@ -57,6 +57,10 @@
         <action
             android:id="@+id/action_userFragment_to_formListFragment"
             app:destination="@id/formListFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/controlCenterFragment"
@@ -78,6 +82,10 @@
             app:destination="@id/mainFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_settingsFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/formFragment"
