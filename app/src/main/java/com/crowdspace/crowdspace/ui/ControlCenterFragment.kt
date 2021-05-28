@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,7 +41,7 @@ class ControlCenterFragment : Fragment() {
     val width = 500
 
     private lateinit var binding: FragmentControlCenterBinding
-    private var business: Business? = null
+    private lateinit  var business: Business
     private lateinit var formCollection: CollectionReference
     private lateinit var businessCollection: CollectionReference
 
@@ -67,63 +68,49 @@ class ControlCenterFragment : Fragment() {
 
         binding.openBtn.setOnClickListener {
             hideButtons()
-            val doc = businessCollection.document(business!!.id.toString())
-            doc.update("status", "open").addOnSuccessListener {
-                doc.get().addOnSuccessListener {
-                    business = it.toObject(Business::class.java)
-                    update()
-                }
-            }.addOnFailureListener {
+            val doc = businessCollection.document(business.id.toString())
+            doc.update("status", "open").addOnFailureListener {
                 Toast.makeText(context, "Operation Failed Please Try Again", Toast.LENGTH_LONG).show()
-                doc.get().addOnSuccessListener {
-                    business = it.toObject(Business::class.java)
-                    update()
-                }
+                update()
             }
         }
 
         binding.closeBtn.setOnClickListener {
             hideButtons()
-            val doc = businessCollection.document(business!!.id.toString())
-            doc.update("status", "closed").addOnSuccessListener {
-                doc.get().addOnSuccessListener {
-                    business = it.toObject(Business::class.java)
-                    update()
-                }
-            }.addOnFailureListener {
+            val doc = businessCollection.document(business.id.toString())
+            doc.update("status", "closed").addOnFailureListener {
                 Toast.makeText(context, "Operation Failed Please Try Again", Toast.LENGTH_LONG).show()
-                doc.get().addOnSuccessListener {
-                    business = it.toObject(Business::class.java)
-                    update()
-                }
+                update()
             }
         }
 
         binding.next.setOnClickListener {
-            val doc = businessCollection.document(business!!.id.toString())
-            val uid = business?.queue?.get(0)
+            val doc = businessCollection.document(business.id.toString())
+            val uid = business.queue?.get(0)
             hideButtons()
             doc.update("queue", FieldValue.arrayRemove(uid), "status", "open").addOnSuccessListener {
-                formCollection.document(uid.toString()).update("active", false).addOnSuccessListener {
-                    doc.get().addOnSuccessListener {
-                        business = it.toObject(Business::class.java)
-                        update()
-                    }
-                }.addOnFailureListener {
-                    doc.get().addOnSuccessListener {
-                        business = it.toObject(Business::class.java)
-                        update()
-                    }
-                }
+                formCollection.document(uid.toString()).update("active", false)
             }.addOnFailureListener {
                 Toast.makeText(context, "Operation Failed Please Try Again", Toast.LENGTH_LONG).show()
-                doc.get().addOnSuccessListener {
-                    business = it.toObject(Business::class.java)
-                    update()
-                }
+                update()
             }
         }
 
+        val docRef = businessCollection.document(business.id.toString())
+        docRef.addSnapshotListener { snapshot, e ->
+            if (e != null) {
+                Log.w(QueueFragment.TAG, "Listen failed.", e)
+                return@addSnapshotListener
+            }
+
+            if (snapshot != null && snapshot.exists()) {
+                business = snapshot.toObject(Business::class.java)!!
+                update()
+
+            } else {
+                Log.d(QueueFragment.TAG, "Current data: null")
+            }
+        }
 
 
         try {
@@ -140,23 +127,22 @@ class ControlCenterFragment : Fragment() {
     }
 
     private fun setup() {
-        binding.businessName.text = business?.name
+        binding.businessName.text = business.name
     }
 
     private fun update() {
-        if (business == null) return
 
-        binding.status.text = business?.status
+        binding.status.text = business.status
         binding.queueSize.text = "Queue Size ${business?.queue?.size.toString()}"
         hideButtons()
 
-        if (business?.status == "closed") {
+        if (business.status == "closed") {
             binding.currentPatient.text = "Open clinic to see the current patient"
             binding.openBtn.visibility = View.VISIBLE
 
         } else {
             binding.closeBtn.visibility = View.VISIBLE
-            if (business?.queue?.size == 0) {
+            if (business.queue?.size == 0) {
                 binding.currentPatient.text = "No patient in the queue"
             } else {
                 binding.next.visibility = View.VISIBLE
@@ -166,7 +152,7 @@ class ControlCenterFragment : Fragment() {
     }
 
     private fun setUser() {
-        val uid = business?.queue?.get(0).toString()
+        val uid = business.queue?.get(0).toString()
         formCollection.document(uid).get()
                 .addOnSuccessListener {
                     val form = it.toObject(Form::class.java)
