@@ -96,6 +96,14 @@ class ControlCenterFragment : Fragment() {
             }
         }
 
+        binding.viewQueue.setOnClickListener {
+            findNavController().navigate(ControlCenterFragmentDirections.actionControlCenterFragmentToQueueFormsFragment(business))
+        }
+
+        binding.addOffline.setOnClickListener {
+            findNavController().navigate(ControlCenterFragmentDirections.actionControlCenterFragmentToOfflineFormFragment(business))
+        }
+
         val docRef = businessCollection.document(business.id.toString())
         docRef.addSnapshotListener { snapshot, e ->
             if (e != null) {
@@ -111,6 +119,7 @@ class ControlCenterFragment : Fragment() {
                 Log.d(QueueFragment.TAG, "Current data: null")
             }
         }
+
 
 
         try {
@@ -142,6 +151,7 @@ class ControlCenterFragment : Fragment() {
 
         } else {
             binding.closeBtn.visibility = View.VISIBLE
+            binding.addOffline.visibility = View.VISIBLE
             if (business.queue?.size == 0) {
                 binding.currentPatient.text = "No patient in the queue"
             } else {
@@ -237,6 +247,7 @@ class ControlCenterFragment : Fragment() {
         binding.next.visibility = View.GONE
         binding.viewInfo.visibility = View.GONE
         binding.timePatient.visibility = View.GONE
+        binding.addOffline.visibility = View.GONE
     }
 
 

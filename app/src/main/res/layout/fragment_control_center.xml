@@ -147,6 +147,19 @@
             android:visibility="gone"
             android:id="@+id/next"/>
 
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Queue"
+            android:id="@+id/view_queue"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Patient"
+            android:visibility="gone"
+            android:id="@+id/add_offline"/>
+
 
     </LinearLayout>
 

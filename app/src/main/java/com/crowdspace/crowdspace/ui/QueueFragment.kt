@@ -149,15 +149,18 @@ class QueueFragment : Fragment() {
 
         // not found in queue
         if (index == -1) {
-            binding.addBtn.visibility = View.VISIBLE
-            binding.index.text = getString(R.string.not_found_in_queue)
-
+            if (business.status == "closed") {
+                binding.index.text = "Not Found in Queue \nYou can register when the clinic opens"
+            } else {
+                binding.addBtn.visibility = View.VISIBLE
+                binding.index.text = getString(R.string.not_found_in_queue)
+            }
         } else {
             if (index != 0) binding.index.text = "$index People ahead of you"
-            else if (business?.status == "open") {
+            else if (business.status == "open") {
                 binding.index.text = "It is your turn! Scan QR code with your phone and enter"
                 binding.scanBtn.visibility = View.VISIBLE
-            } else if (business?.status == "occupied") {
+            } else if (business.status == "occupied") {
                 binding.index.text = "You are in!"
             } else {
                 binding.index.text = "It is your turn! Please wait for the business to open again"
