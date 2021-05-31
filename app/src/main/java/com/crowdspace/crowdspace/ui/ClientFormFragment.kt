@@ -52,6 +52,7 @@ class ClientFormFragment : Fragment() {
                     val business = Business(
                         name = binding.doctorName.text.toString(),
                         hospitalId = hospital.id,
+                        avgTime = binding.averageTime.text.toString().toInt(),
                         adminId = id
                     )
 
@@ -92,6 +93,14 @@ class ClientFormFragment : Fragment() {
                     binding.root,
                     "Name Required",
                     Snackbar.LENGTH_LONG
+                ).show()
+                return false
+            }
+            binding.averageTime.text.isNullOrBlank() -> {
+                Snackbar.make(
+                        binding.root,
+                        "Average Consultation Time Required",
+                        Snackbar.LENGTH_LONG
                 ).show()
                 return false
             }

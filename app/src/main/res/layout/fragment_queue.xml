@@ -82,6 +82,17 @@
                 android:textStyle="bold"
                 android:text="@string/not_found_in_queue" />
 
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:id="@+id/time"
+                android:gravity="center"
+                android:layout_margin="5dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="Time" />
+
         </LinearLayout>
 
 

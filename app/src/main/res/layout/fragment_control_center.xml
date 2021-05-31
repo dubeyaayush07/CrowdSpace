@@ -95,6 +95,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/time"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:layout_margin="5dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="Till" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:id="@+id/currentPatient"
                 android:fontFamily="sans-serif-light"
                 android:gravity="center"
@@ -106,13 +117,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/timePatient"
+                android:id="@+id/contact_number"
                 android:fontFamily="sans-serif-light"
                 android:gravity="center"
                 android:layout_margin="5dp"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:text="Timestamp" />
+                android:text="Contact" />
 
         </LinearLayout>
 

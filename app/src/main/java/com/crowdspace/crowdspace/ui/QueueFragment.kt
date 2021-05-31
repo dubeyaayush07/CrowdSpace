@@ -84,7 +84,7 @@ class QueueFragment : Fragment() {
                 return@addSnapshotListener
             }
 
-            if (snapshot != null && snapshot.exists()) {
+            if (snapshot != null && snapshot.exists() && !formId.isBlank()) {
                 business = snapshot.toObject(Business::class.java)!!
                 checkIndex(formId)
 
@@ -146,6 +146,12 @@ class QueueFragment : Fragment() {
         binding.status.text = business?.status
         binding.queueSize.text = "Queue Size ${business?.queue?.size.toString()}"
 
+        if (business.status == "closed") {
+            binding.time.text = "Opening Time: ${business.till}"
+        } else {
+            binding.time.text = "Closing Time: ${business.till}"
+        }
+
 
         // not found in queue
         if (index == -1) {
@@ -156,7 +162,7 @@ class QueueFragment : Fragment() {
                 binding.index.text = getString(R.string.not_found_in_queue)
             }
         } else {
-            if (index != 0) binding.index.text = "$index People ahead of you"
+            if (index != 0) binding.index.text = "$index People ahead of you\nApproximate waiting time ${index * business.avgTime!!} minutes"
             else if (business.status == "open") {
                 binding.index.text = "It is your turn! Scan QR code with your phone and enter"
                 binding.scanBtn.visibility = View.VISIBLE
