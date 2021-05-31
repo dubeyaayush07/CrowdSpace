@@ -35,11 +35,11 @@ class FormDisplayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.name.text = form.name
-        binding.condition.text = form.condition
-        binding.days.text = form.visit.toString()
-        binding.height.text = form.height
-        binding.weight.text = form.weight
+        binding.name.text =  if (form.name.isNullOrBlank()) "Not Available" else form.name
+        binding.condition.text = if (form.condition.isNullOrBlank()) "Not Available" else form.condition
+        binding.days.text = if (form.visit == 0) "Not Available" else form.visit.toString()
+        binding.height.text = if (form.height.isNullOrBlank()) "Not Available" else form.height
+        binding.weight.text = if (form.weight.isNullOrBlank()) "Not Available" else form.weight
 
         if (form.url != null && !form.url.isNullOrBlank()) {
             binding.openDocument.visibility = View.VISIBLE

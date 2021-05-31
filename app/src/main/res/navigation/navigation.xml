@@ -72,6 +72,12 @@
         <action
             android:id="@+id/action_controlCenterFragment_to_formDisplayFragment"
             app:destination="@id/formDisplayFragment" />
+        <action
+            android:id="@+id/action_controlCenterFragment_to_queueFormsFragment"
+            app:destination="@id/queueFormsFragment" />
+        <action
+            android:id="@+id/action_controlCenterFragment_to_offlineFormFragment"
+            app:destination="@id/offlineFormFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -155,5 +161,26 @@
         <argument
             android:name="selectedForm"
             app:argType="com.crowdspace.crowdspace.model.Form" />
+    </fragment>
+    <fragment
+        android:id="@+id/queueFormsFragment"
+        android:name="com.crowdspace.crowdspace.ui.QueueFormsFragment"
+        android:label="QueueFormsFragment" >
+        <argument
+            android:name="selectedBusiness"
+            app:argType="com.crowdspace.crowdspace.model.Business" />
+    </fragment>
+    <fragment
+        android:id="@+id/offlineFormFragment"
+        android:name="com.crowdspace.crowdspace.ui.OfflineFormFragment"
+        android:label="OfflineFormFragment" >
+        <argument
+            android:name="selectedBusiness"
+            app:argType="com.crowdspace.crowdspace.model.Business" />
+        <action
+            android:id="@+id/action_offlineFormFragment_to_controlCenterFragment"
+            app:destination="@id/controlCenterFragment"
+            app:popUpTo="@id/controlCenterFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

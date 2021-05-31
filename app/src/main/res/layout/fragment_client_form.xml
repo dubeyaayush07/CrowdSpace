@@ -67,6 +67,44 @@
             style="@style/Widget.Neumorph.CardView"
             android:layout_marginTop="10dp"
             app:neumorph_shapeType="pressed"
+            android:layout_marginHorizontal="15dp">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:hint="Average Consultation Time in Minutes"
+                android:textColorHint="#7D818A"
+                app:boxStrokeErrorColor="#f0f2f5"
+                app:helperTextTextColor="#7D818A"
+                app:placeholderTextColor="#7D818A"
+                app:hintTextColor="#66b2b2"
+                app:boxStrokeColor="#f0f2f5"
+                app:boxBackgroundColor="#f0f2f5"
+                app:boxStrokeWidth="1.5dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:id="@+id/average_time"
+                    android:textFontWeight="450"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#3b3c36"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </soup.neumorphism.NeumorphCardView>
+
+
+        <soup.neumorphism.NeumorphCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Neumorph.CardView"
+            android:layout_marginTop="10dp"
+            app:neumorph_shapeType="pressed"
             android:layout_marginHorizontal="15dp"
             >
 

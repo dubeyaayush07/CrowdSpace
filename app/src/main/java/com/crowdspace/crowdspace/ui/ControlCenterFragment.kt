@@ -1,6 +1,7 @@
 package com.crowdspace.crowdspace.ui
 
-import android.content.Context
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -16,7 +17,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.crowdspace.crowdspace.R
 import com.crowdspace.crowdspace.databinding.FragmentControlCenterBinding
-import com.crowdspace.crowdspace.formatDate
 import com.crowdspace.crowdspace.model.Business
 import com.crowdspace.crowdspace.model.Form
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -24,7 +24,6 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.WriterException
@@ -32,6 +31,8 @@ import com.google.zxing.common.BitMatrix
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class ControlCenterFragment : Fragment() {
@@ -67,21 +68,11 @@ class ControlCenterFragment : Fragment() {
 
 
         binding.openBtn.setOnClickListener {
-            hideButtons()
-            val doc = businessCollection.document(business.id.toString())
-            doc.update("status", "open").addOnFailureListener {
-                Toast.makeText(context, "Operation Failed Please Try Again", Toast.LENGTH_LONG).show()
-                update()
-            }
+            pickDateTime("open", "Set Closing Time")
         }
 
         binding.closeBtn.setOnClickListener {
-            hideButtons()
-            val doc = businessCollection.document(business.id.toString())
-            doc.update("status", "closed").addOnFailureListener {
-                Toast.makeText(context, "Operation Failed Please Try Again", Toast.LENGTH_LONG).show()
-                update()
-            }
+            pickDateTime("closed", "Set Opening Time")
         }
 
         binding.next.setOnClickListener {
@@ -94,6 +85,14 @@ class ControlCenterFragment : Fragment() {
                 Toast.makeText(context, "Operation Failed Please Try Again", Toast.LENGTH_LONG).show()
                 update()
             }
+        }
+
+        binding.viewQueue.setOnClickListener {
+            findNavController().navigate(ControlCenterFragmentDirections.actionControlCenterFragmentToQueueFormsFragment(business))
+        }
+
+        binding.addOffline.setOnClickListener {
+            findNavController().navigate(ControlCenterFragmentDirections.actionControlCenterFragmentToOfflineFormFragment(business))
         }
 
         val docRef = businessCollection.document(business.id.toString())
@@ -113,6 +112,7 @@ class ControlCenterFragment : Fragment() {
         }
 
 
+
         try {
             val bitmap = encodeAsBitmap(business?.id.toString())
             binding.shareQr.setImageBitmap(bitmap)
@@ -124,6 +124,32 @@ class ControlCenterFragment : Fragment() {
             e.printStackTrace()
         }
 
+    }
+
+    private fun pickDateTime(status: String, title: String) {
+        val currentDateTime = Calendar.getInstance()
+        val startYear = currentDateTime.get(Calendar.YEAR)
+        val startMonth = currentDateTime.get(Calendar.MONTH)
+        val startDay = currentDateTime.get(Calendar.DAY_OF_MONTH)
+        val startHour = currentDateTime.get(Calendar.HOUR_OF_DAY)
+        val startMinute = currentDateTime.get(Calendar.MINUTE)
+
+        val dialog = DatePickerDialog(requireContext(), android.R.style.Theme_Material_Light_Dialog, { _, year, month, day ->
+            TimePickerDialog(requireContext(), { _, hour, minute ->
+                val pickedDateTime = Calendar.getInstance()
+                pickedDateTime.set(year, month, day, hour, minute)
+                val till = SimpleDateFormat("EEE MMM dd HH:mm yyyy").format(pickedDateTime.time)
+                hideButtons()
+                val doc = businessCollection.document(business.id.toString())
+                doc.update("status", status, "till", till).addOnFailureListener {
+                    Toast.makeText(context, "Operation Failed Please Try Again", Toast.LENGTH_LONG).show()
+                    update()
+                }
+            }, startHour, startMinute, false).show()
+        }, startYear, startMonth, startDay)
+
+        dialog.setTitle(title)
+        dialog.show()
     }
 
     private fun setup() {
@@ -138,10 +164,13 @@ class ControlCenterFragment : Fragment() {
 
         if (business.status == "closed") {
             binding.currentPatient.text = "Open clinic to see the current patient"
+            binding.time.text = "Opening Time: ${business.till}"
             binding.openBtn.visibility = View.VISIBLE
 
         } else {
             binding.closeBtn.visibility = View.VISIBLE
+            binding.time.text = "Closing Time: ${business.till}"
+            binding.addOffline.visibility = View.VISIBLE
             if (business.queue?.size == 0) {
                 binding.currentPatient.text = "No patient in the queue"
             } else {
@@ -157,9 +186,9 @@ class ControlCenterFragment : Fragment() {
                 .addOnSuccessListener {
                     val form = it.toObject(Form::class.java)
                     if (form != null) {
-                        binding.timePatient.visibility = View.VISIBLE
+                        binding.contactNumber.visibility = View.VISIBLE
                         binding.currentPatient.text = "Current Patient: ${form.name}"
-                        binding.timePatient.text = "${formatDate(form.timeStamp!!)}"
+                        binding.contactNumber.text = "Contact Number: ${form.contact}"
                         binding.viewInfo.visibility = View.VISIBLE
                         binding.viewInfo.setOnClickListener {
                             findNavController().navigate(ControlCenterFragmentDirections.actionControlCenterFragmentToFormDisplayFragment(form))
@@ -221,10 +250,10 @@ class ControlCenterFragment : Fragment() {
             stream.flush()
             stream.close()
              uri = FileProvider.getUriForFile(
-                    requireContext(),
-                    context?.applicationContext?.packageName + ".provider",
-                    file
-            )
+                     requireContext(),
+                     context?.applicationContext?.packageName + ".provider",
+                     file
+             )
         } catch (e: IOException) {
             e.printStackTrace()
         }
@@ -236,7 +265,8 @@ class ControlCenterFragment : Fragment() {
         binding.closeBtn.visibility = View.GONE
         binding.next.visibility = View.GONE
         binding.viewInfo.visibility = View.GONE
-        binding.timePatient.visibility = View.GONE
+        binding.contactNumber.visibility = View.GONE
+        binding.addOffline.visibility = View.GONE
     }
 
 
