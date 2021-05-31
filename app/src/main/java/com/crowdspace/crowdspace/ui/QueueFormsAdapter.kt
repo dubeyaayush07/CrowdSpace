@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.crowdspace.crowdspace.R
+import com.crowdspace.crowdspace.formatDate
 import com.crowdspace.crowdspace.model.Form
 
 class QueueFormsAdapter() : RecyclerView.Adapter<QueueFormsAdapter.ViewHolder>() {
@@ -31,9 +32,11 @@ class QueueFormsAdapter() : RecyclerView.Adapter<QueueFormsAdapter.ViewHolder>()
     class ViewHolder private constructor(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         val name: TextView = itemView.findViewById(R.id.name)
+        val time: TextView = itemView.findViewById(R.id.time)
 
         fun bind(item: Form) {
             name.text = item.name
+            time.text = formatDate(item.timeStamp)
         }
 
         companion object {

@@ -57,7 +57,7 @@ class OfflineFormFragment : Fragment() {
             binding.number.text.isNullOrBlank() -> {
                 Snackbar.make(
                     binding.root,
-                    "Height Required",
+                    "Contact Number Required",
                     Snackbar.LENGTH_LONG
                 ).show()
                 return false
@@ -72,9 +72,10 @@ class OfflineFormFragment : Fragment() {
         binding.submitBtn.isEnabled = false
         val collection = Firebase.firestore.collection("forms")
         val form = Form(
-            uid = binding.number.toString(),
+            uid = binding.number.text.toString(),
             bid = business.id,
             bName = business.name,
+            contact = binding.number.text.toString(),
             name = binding.name.text.toString()
         )
 

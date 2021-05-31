@@ -19,5 +19,6 @@ data class Form(
         var visit: Int? = 0,
         var height: String? = "",
         var weight: String? = "",
+        var contact: String? = "",
         var active: Boolean? = true
 ): Parcelable

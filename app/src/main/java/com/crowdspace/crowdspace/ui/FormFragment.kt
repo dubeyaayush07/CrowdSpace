@@ -153,6 +153,14 @@ class FormFragment : Fragment() {
                 ).show()
                 return false
             }
+            binding.contactNumber.text.isNullOrBlank() -> {
+                Snackbar.make(
+                        binding.root,
+                        "Contact Number Required",
+                        Snackbar.LENGTH_LONG
+                ).show()
+                return false
+            }
             binding.condition.text.isNullOrBlank() -> {
                 Snackbar.make(
                         binding.root,
@@ -185,6 +193,7 @@ class FormFragment : Fragment() {
                 name = binding.name.text.toString(),
                 height = binding.height.text.toString(),
                 weight = binding.weight.text.toString(),
+                contact = binding.contactNumber.text.toString(),
                 condition = binding.condition.text.toString(),
                 url = url,
                 visit = binding.visit.text.toString().toInt()
