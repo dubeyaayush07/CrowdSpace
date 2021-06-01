@@ -168,13 +168,12 @@ class ControlCenterFragment : Fragment() {
             binding.openBtn.visibility = View.VISIBLE
 
         } else {
-            binding.closeBtn.visibility = View.VISIBLE
-            binding.time.text = "Closing Time: ${business.till}"
-            binding.addOffline.visibility = View.VISIBLE
             if (business.queue?.size == 0) {
+                binding.closeBtn.visibility = View.VISIBLE
+                binding.time.text = "Closing Time: ${business.till}"
+                binding.addOffline.visibility = View.VISIBLE
                 binding.currentPatient.text = "No patient in the queue"
             } else {
-                binding.next.visibility = View.VISIBLE
                 setUser()
             }
         }
@@ -186,6 +185,10 @@ class ControlCenterFragment : Fragment() {
                 .addOnSuccessListener {
                     val form = it.toObject(Form::class.java)
                     if (form != null) {
+                        binding.closeBtn.visibility = View.VISIBLE
+                        binding.time.text = "Closing Time: ${business.till}"
+                        binding.addOffline.visibility = View.VISIBLE
+                        binding.next.visibility = View.VISIBLE
                         binding.contactNumber.visibility = View.VISIBLE
                         binding.currentPatient.text = "Current Patient: ${form.name}"
                         binding.contactNumber.text = "Contact Number: ${form.contact}"
