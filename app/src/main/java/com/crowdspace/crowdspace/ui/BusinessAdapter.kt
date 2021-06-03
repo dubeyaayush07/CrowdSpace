@@ -40,11 +40,20 @@ class BusinessAdapter(private val onClickListener: OnClickListener): RecyclerVie
         val viewBtn: Button = itemView.findViewById(R.id.view_btn)
         val status: TextView = itemView.findViewById(R.id.status)
         val size: TextView = itemView.findViewById(R.id.queueSize)
+        val waitingTime: TextView = itemView.findViewById(R.id.textView9)
+        val time: TextView = itemView.findViewById(R.id.time)
 
         fun bind(item: Business, onClickListener: OnClickListener) {
             businessName.text = item.name
             status.text = item.status
             size.text = "Queue Size ${item.queue?.size.toString()}"
+            waitingTime.text = "${item.queue?.size?.times(item.avgTime!!.toInt())} Minutes"
+
+            if (item.status == "closed") {
+                time.text = "Opening Time\n${item.till}"
+            } else {
+                time.text = "Closing Time\n${item.till}"
+            }
 
 
             viewBtn.setOnClickListener {
