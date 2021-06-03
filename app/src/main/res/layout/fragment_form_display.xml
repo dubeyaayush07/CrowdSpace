@@ -142,11 +142,22 @@
 
 
 
-        <com.google.android.material.button.MaterialButton
+        <soup.neumorphism.NeumorphButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Open Attached Document"
             android:visibility="gone"
+            style="@style/Widget.Neumorph.Button"
+            android:letterSpacing="0.1"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="18dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp"
+            app:rippleColor="@color/white"
+            app:neumorph_backgroundColor="#66b2b2"
+            app:neumorph_shadowColorDark="#cdcdcd"
+            app:neumorph_shadowColorLight="#f6f6f6"
+            app:neumorph_shapeType="flat"
             android:id="@+id/openDocument"/>
 
 

@@ -53,6 +53,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/doctorName"
                     android:textFontWeight="450"
+                    android:textCursorDrawable="@drawable/cursor"
                     android:fontFamily="sans-serif-light"
                     android:textColor="#3b3c36"
                     />
@@ -91,6 +92,7 @@
                     android:inputType="number"
                     android:id="@+id/average_time"
                     android:textFontWeight="450"
+                    android:textCursorDrawable="@drawable/cursor"
                     android:fontFamily="sans-serif-light"
                     android:textColor="#3b3c36"
                     />
@@ -130,6 +132,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/doctorEmailId"
                     android:textFontWeight="450"
+                    android:textCursorDrawable="@drawable/cursor"
                     android:fontFamily="sans-serif-light"
                     android:textColor="#3b3c36"
                     />
@@ -153,6 +156,4 @@
             />
 
     </LinearLayout>
-
-
 </layout>

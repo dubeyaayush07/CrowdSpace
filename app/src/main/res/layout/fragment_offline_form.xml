@@ -26,68 +26,94 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <com.google.android.material.textfield.TextInputLayout
+        <soup.neumorphism.NeumorphCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:hint="Name"
-            android:textColorHint="#7D818A"
-            app:helperTextTextColor="#7D818A"
-            app:placeholderTextColor="#7D818A"
-            app:hintTextColor="#66b2b2"
-            app:boxStrokeColor="#66b2b2"
-            app:boxStrokeWidth="2dp"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
+            style="@style/Widget.Neumorph.CardView"
+            android:layout_marginTop="10dp"
+            app:neumorph_shapeType="pressed"
+            android:layout_marginHorizontal="15dp">
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/name"
-                android:textFontWeight="450"
-                android:fontFamily="sans-serif-light"
-                android:textColor="#3b3c36"
-                />
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:hint="Name"
+                android:textColorHint="#7D818A"
+                app:boxStrokeErrorColor="#f0f2f5"
+                app:helperTextTextColor="#7D818A"
+                app:placeholderTextColor="#7D818A"
+                app:hintTextColor="#66b2b2"
+                app:boxStrokeColor="#f0f2f5"
+                app:boxBackgroundColor="#f0f2f5"
+                app:boxStrokeWidth="1.5dp">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/name"
+                    android:maxLength="100"
+                    android:textFontWeight="450"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:textColorHighlight="@color/black"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#3b3c36"
+                    />
 
-        <com.google.android.material.textfield.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+        </soup.neumorphism.NeumorphCardView>
+
+        <soup.neumorphism.NeumorphCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:hint="Contact Number"
-            android:textColorHint="#7D818A"
-            app:helperTextTextColor="#7D818A"
-            app:placeholderTextColor="#7D818A"
-            app:hintTextColor="#66b2b2"
-            app:boxStrokeColor="#66b2b2"
-            app:boxStrokeWidth="2dp"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
+            style="@style/Widget.Neumorph.CardView"
+            android:layout_marginTop="10dp"
+            app:neumorph_shapeType="pressed"
+            android:layout_marginHorizontal="15dp">
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/number"
-                android:inputType="number"
-                android:textFontWeight="450"
-                android:fontFamily="sans-serif-light"
-                android:textColor="#3b3c36"
-                />
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:hint="Contact Number"
+                android:textColorHint="#7D818A"
+                app:boxStrokeErrorColor="#f0f2f5"
+                app:helperTextTextColor="#7D818A"
+                app:placeholderTextColor="#7D818A"
+                app:hintTextColor="#66b2b2"
+                app:boxStrokeColor="#f0f2f5"
+                app:boxBackgroundColor="#f0f2f5"
+                app:boxStrokeWidth="1.5dp">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/number"
+                    android:textFontWeight="450"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:cursorVisible="true"
+                    android:maxLength="10"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#3b3c36"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </soup.neumorphism.NeumorphCardView>
+
 
         <soup.neumorphism.NeumorphButton
             android:id="@+id/submit_btn"
             style="@style/Widget.Neumorph.Button"
             android:letterSpacing="0.1"
+            android:height="80dp"
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="18dp"
             android:textColor="@color/white"
-            android:textSize="@dimen/_13sdp"
+            android:textSize="@dimen/_15sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Submit"

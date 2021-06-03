@@ -3,262 +3,273 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:background="#f0f2f5"
-        android:layout_height="match_parent">
-
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_height="match_parent"
+        android:background="#f0f2f5">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-6dp"
-            android:max="100"
-            android:progress="15"
-            android:visibility="gone"
-            android:scaleY="2" />
+            android:orientation="vertical"
+            android:background="#f0f2f5"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#66b2b2"
-            android:paddingStart="@dimen/_20sdp"
-            android:paddingTop="@dimen/_10sdp"
-            android:paddingBottom="@dimen/_10sdp"
-            android:text="BOOK APPOINTMENT"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_18ssp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:hint="Name"
-            android:textColorHint="#7D818A"
-            app:helperTextTextColor="#7D818A"
-            app:placeholderTextColor="#7D818A"
-            app:hintTextColor="#66b2b2"
-            app:boxStrokeColor="#66b2b2"
-            app:boxStrokeWidth="2dp"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/name"
-                android:textFontWeight="450"
-                android:fontFamily="sans-serif-light"
-                android:textColor="#3b3c36"
-                />
+                android:layout_marginTop="-6dp"
+                android:max="100"
+                android:progress="15"
+                android:visibility="gone"
+                android:scaleY="2" />
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:hint="Height in centimeter"
-            android:textColorHint="#7D818A"
-            app:helperTextTextColor="#7D818A"
-            app:placeholderTextColor="#7D818A"
-            app:hintTextColor="#66b2b2"
-            app:boxStrokeColor="#66b2b2"
-            app:boxStrokeWidth="2dp"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
+            <TextView
+                android:id="@+id/textTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/height"
-                android:inputType="number"
-                android:textFontWeight="450"
-                android:fontFamily="sans-serif-light"
-                android:textColor="#3b3c36"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:hint="Weight in kilograms"
-            android:textColorHint="#7D818A"
-            app:helperTextTextColor="#7D818A"
-            app:placeholderTextColor="#7D818A"
-            app:hintTextColor="#66b2b2"
-            app:boxStrokeColor="#66b2b2"
-            app:boxStrokeWidth="2dp"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/weight"
-                android:inputType="number"
-                android:textFontWeight="450"
-                android:fontFamily="sans-serif-light"
-                android:textColor="#3b3c36"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:hint="Describe your condition"
-            android:textColorHint="#7D818A"
-            app:helperTextTextColor="#7D818A"
-            app:placeholderTextColor="#7D818A"
-            app:hintTextColor="#66b2b2"
-            app:boxStrokeColor="#66b2b2"
-            app:boxStrokeWidth="2dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/condition"
-                android:textFontWeight="450"
-                android:fontFamily="sans-serif-light"
-                android:textColor="#3b3c36"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:hint="Days since problem persists"
-            android:textColorHint="#7D818A"
-            app:helperTextTextColor="#7D818A"
-            app:placeholderTextColor="#7D818A"
-            app:hintTextColor="#66b2b2"
-            app:boxStrokeColor="#66b2b2"
-            app:boxStrokeWidth="2dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:id="@+id/visit"
-                android:textFontWeight="450"
-                android:fontFamily="sans-serif-light"
-                android:textColor="#3b3c36"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:hint="Contact Number"
-            android:textColorHint="#7D818A"
-            app:helperTextTextColor="#7D818A"
-            app:placeholderTextColor="#7D818A"
-            app:hintTextColor="#66b2b2"
-            app:boxStrokeColor="#66b2b2"
-            app:boxStrokeWidth="2dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:id="@+id/contact_number"
-                android:textFontWeight="450"
-                android:fontFamily="sans-serif-light"
-                android:textColor="#3b3c36"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="35dp"
-                android:text="File not uploaded"
-                android:textColor="#66b2b2"
-                android:textSize="14sp"
+                android:background="#66b2b2"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:text="BOOK APPOINTMENT"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18ssp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:layout_width="wrap_content"
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:text="If any Previous Medical Paper Upload here"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/status"
-                app:layout_constraintVertical_bias="1.0" />
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:hint="Name"
+                android:textColorHint="#7D818A"
+                app:helperTextTextColor="#7D818A"
+                app:placeholderTextColor="#7D818A"
+                app:hintTextColor="#66b2b2"
+                app:boxStrokeColor="#66b2b2"
+                app:boxStrokeWidth="2dp"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/name"
+                    android:textFontWeight="450"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#3b3c36"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:hint="Height in centimeter"
+                android:textColorHint="#7D818A"
+                app:helperTextTextColor="#7D818A"
+                app:placeholderTextColor="#7D818A"
+                app:hintTextColor="#66b2b2"
+                app:boxStrokeColor="#66b2b2"
+                app:boxStrokeWidth="2dp"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/height"
+                    android:inputType="number"
+                    android:textFontWeight="450"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#3b3c36"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:hint="Weight in kilograms"
+                android:textColorHint="#7D818A"
+                app:helperTextTextColor="#7D818A"
+                app:placeholderTextColor="#7D818A"
+                app:hintTextColor="#66b2b2"
+                app:boxStrokeColor="#66b2b2"
+                app:boxStrokeWidth="2dp"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/weight"
+                    android:inputType="number"
+                    android:textFontWeight="450"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#3b3c36"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:hint="Describe your condition"
+                android:textColorHint="#7D818A"
+                app:helperTextTextColor="#7D818A"
+                app:placeholderTextColor="#7D818A"
+                app:hintTextColor="#66b2b2"
+                app:boxStrokeColor="#66b2b2"
+                app:boxStrokeWidth="2dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/condition"
+                    android:textFontWeight="450"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#3b3c36"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:hint="Days since problem persists"
+                android:textColorHint="#7D818A"
+                app:helperTextTextColor="#7D818A"
+                app:placeholderTextColor="#7D818A"
+                app:hintTextColor="#66b2b2"
+                app:boxStrokeColor="#66b2b2"
+                app:boxStrokeWidth="2dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:id="@+id/visit"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:textFontWeight="450"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#3b3c36"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:hint="Contact Number"
+                android:textColorHint="#7D818A"
+                app:helperTextTextColor="#7D818A"
+                app:placeholderTextColor="#7D818A"
+                app:hintTextColor="#66b2b2"
+                app:boxStrokeColor="#66b2b2"
+                app:boxStrokeWidth="2dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:id="@+id/contact_number"
+                    android:textFontWeight="450"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#3b3c36"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="35dp"
+                    android:text="File not uploaded"
+                    android:textColor="#66b2b2"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="If any Previous Medical Paper Upload here"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/status"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <soup.neumorphism.NeumorphButton
+                    android:id="@+id/upload"
+                    style="@style/Widget.Neumorph.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="Upload"
+                    android:textColor="@color/white"
+                    app:neumorph_backgroundColor="#66b2b2"
+                    android:textSize="@dimen/_12sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <soup.neumorphism.NeumorphButton
-                android:id="@+id/upload"
+                android:id="@+id/submit_btn"
                 style="@style/Widget.Neumorph.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp"
-                android:text="Upload"
+                android:letterSpacing="0.1"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="18dp"
                 android:textColor="@color/white"
+                android:textSize="@dimen/_13sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                app:rippleColor="@color/white"
                 app:neumorph_backgroundColor="#66b2b2"
-                android:textSize="@dimen/_12sdp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:neumorph_shadowColorDark="#cdcdcd"
+                app:neumorph_shadowColorLight="#f6f6f6"
+                app:neumorph_shapeType="flat"
+                />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <soup.neumorphism.NeumorphButton
-            android:id="@+id/submit_btn"
-            style="@style/Widget.Neumorph.Button"
-            android:letterSpacing="0.1"
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="18dp"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_13sdp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Submit"
-            app:rippleColor="@color/white"
-            app:neumorph_backgroundColor="#66b2b2"
-            app:neumorph_shadowColorDark="#cdcdcd"
-            app:neumorph_shadowColorLight="#f6f6f6"
-            app:neumorph_shapeType="flat"
-            />
-
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 
 </layout>
