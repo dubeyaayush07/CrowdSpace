@@ -4,6 +4,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 fun formatDate(date: Date): String {
-    val formatter = SimpleDateFormat("EEE MMM dd HH:mm:ss yyyy")
+    val formatter = SimpleDateFormat("HH:mm:ss EEE MMM dd ")
     return formatter.format(date)
 }

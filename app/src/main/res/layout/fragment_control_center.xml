@@ -3,176 +3,255 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="top"
-        android:orientation="vertical"
         android:background="#f0f2f5">
-
-
-        <TextView
-            android:id="@+id/textTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#66b2b2"
-            android:paddingStart="@dimen/_20sdp"
-            android:paddingTop="@dimen/_10sdp"
-            android:paddingBottom="@dimen/_10sdp"
-            android:text="Control Center"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_20ssp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <ProgressBar
-            android:id="@+id/progress"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-6dp"
-            android:max="100"
-            android:progress="15"
-            android:visibility="gone"
-            android:scaleY="2" />
-
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:orientation="vertical"
+            android:background="#f0f2f5">
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:id="@+id/shareQr"/>
 
             <TextView
-                android:id="@+id/business_name"
-                android:layout_width="wrap_content"
+                android:id="@+id/textTitle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
-                android:layout_marginBottom="20dp"
-                android:layout_weight="450"
-                android:text="@string/name"
-                android:textColor="#66b2b2"
-                android:textSize="22.5dp"
+                android:background="#66b2b2"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:text="Control Center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_20ssp"
                 android:textStyle="bold"
-                />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/queueSize"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15.5sp"
-                android:layout_marginBottom="20dp"
-                android:text="Queue Size 0"/>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <ProgressBar
+                android:id="@+id/progress"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="15.5sp"
-                android:text="Clinic Status" />
+                android:layout_marginTop="-6dp"
+                android:max="100"
+                android:progress="15"
+                android:visibility="gone"
+                android:scaleY="2" />
 
-            <TextView
-                android:id="@+id/status"
-                android:layout_width="wrap_content"
-                android:textAllCaps="true"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:fontFamily="sans-serif-light"
-                android:textFontWeight="600"
-                android:textColor="#66b2b2"
-                android:layout_marginBottom="20dp"
-                android:text="Status"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/time"
-                android:fontFamily="sans-serif-light"
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:layout_margin="5dp"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:text="Till" />
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/currentPatient"
-                android:fontFamily="sans-serif-light"
-                android:gravity="center"
-                android:layout_margin="5dp"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:text="Current Patient" />
+                >
 
-            <TextView
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/shareQr"/>
+
+                <TextView
+                    android:id="@+id/business_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="450"
+                    android:text="@string/name"
+                    android:textColor="#66b2b2"
+                    android:textSize="22.5dp"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:id="@+id/queueSize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15.5sp"
+                    android:layout_marginBottom="20dp"
+                    android:text="Queue Size 0"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15.5sp"
+                    android:text="Clinic Status" />
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:textAllCaps="true"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif-light"
+                    android:textFontWeight="600"
+                    android:textColor="#66b2b2"
+                    android:layout_marginBottom="5dp"
+                    android:text="Status"
+                    />
+
+                <soup.neumorphism.NeumorphButton
+                    android:id="@+id/openBtn"
+                    style="@style/Widget.Neumorph.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="70dp"
+                    android:letterSpacing="0.1"
+                    android:text="Open Clinic"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13sdp"
+                    android:visibility="gone"
+                    app:neumorph_backgroundColor="#66b2b2"
+                    app:neumorph_shadowColorDark="#cdcdcd"
+                    app:neumorph_shadowColorLight="#f6f6f6"
+                    app:neumorph_shapeType="flat"
+                    app:rippleColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:text="Till"
+                    android:textFontWeight="470"
+                    android:textSize="16sp" />
+
+                <soup.neumorphism.NeumorphButton
+                    android:id="@+id/closeBtn"
+                    style="@style/Widget.Neumorph.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="70dp"
+                    android:letterSpacing="0.1"
+                    android:text="Close Clinic"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13sdp"
+                    android:visibility="visible"
+                    app:neumorph_backgroundColor="#66b2b2"
+                    app:neumorph_shadowColorDark="#cdcdcd"
+                    app:neumorph_shadowColorLight="#f6f6f6"
+                    app:neumorph_shapeType="flat"
+                    app:rippleColor="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/currentPatient"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:textFontWeight="470"
+                    android:layout_margin="5dp"
+                    android:textSize="16sp"
+                    android:text="Current Patient" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact_number"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:layout_margin="5dp"
+                    android:textFontWeight="470"
+                    android:textSize="16sp"
+                    android:text="Contact" />
+
+            </LinearLayout>
+
+
+            <soup.neumorphism.NeumorphButton
+                android:id="@+id/view_info"
+                style="@style/Widget.Neumorph.Button"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/contact_number"
-                android:fontFamily="sans-serif-light"
-                android:gravity="center"
-                android:layout_margin="5dp"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:text="Contact" />
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginTop="16dp"
+                android:letterSpacing="0.1"
+                android:text="View Patient Information"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13sdp"
+                android:visibility="visible"
+                app:neumorph_backgroundColor="#66b2b2"
+                app:neumorph_shadowColorDark="#cdcdcd"
+                app:neumorph_shadowColorLight="#f6f6f6"
+                app:neumorph_shapeType="flat"
+                app:rippleColor="@color/white" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <soup.neumorphism.NeumorphButton
+                    android:id="@+id/next"
+                    style="@style/Widget.Neumorph.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.1"
+                    android:text="Next Patient"
+                    android:layout_marginLeft="@dimen/_150sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13sdp"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:neumorph_backgroundColor="#66b2b2"
+                    app:neumorph_shadowColorDark="#cdcdcd"
+                    app:neumorph_shadowColorLight="#f6f6f6"
+                    app:neumorph_shapeType="flat"
+                    app:rippleColor="@color/white" />
+
+                <soup.neumorphism.NeumorphButton
+                    android:id="@+id/add_offline"
+                    style="@style/Widget.Neumorph.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.1"
+                    android:text="Add Patient"
+                    android:layout_marginRight="@dimen/_150sdp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/next"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:neumorph_backgroundColor="#66b2b2"
+                    app:neumorph_shadowColorDark="#cdcdcd"
+                    app:neumorph_shadowColorLight="#f6f6f6"
+                    app:neumorph_shapeType="flat"
+                    app:rippleColor="@color/white" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <soup.neumorphism.NeumorphButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="View Queue"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                style="@style/Widget.Neumorph.Button"
+                android:letterSpacing="0.1"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13sdp"
+                app:rippleColor="@color/white"
+                app:neumorph_backgroundColor="#66b2b2"
+                app:neumorph_shadowColorDark="#cdcdcd"
+                app:neumorph_shadowColorLight="#f6f6f6"
+                app:neumorph_shapeType="flat"
+                android:id="@+id/view_queue"/>
+
 
         </LinearLayout>
-
-
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="View Patient Information"
-            android:visibility="gone"
-            android:id="@+id/view_info"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Open Clinic"
-            android:visibility="gone"
-            android:id="@+id/openBtn"/>
-
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Close Clinic"
-            android:visibility="gone"
-            android:id="@+id/closeBtn"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Next Patient"
-            android:visibility="gone"
-            android:id="@+id/next"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="View Queue"
-            android:id="@+id/view_queue"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Patient"
-            android:visibility="gone"
-            android:id="@+id/add_offline"/>
-
-
-    </LinearLayout>
+    </ScrollView>
 
 
 </layout>

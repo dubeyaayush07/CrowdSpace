@@ -20,7 +20,7 @@
             android:paddingBottom="@dimen/_10sdp"
             android:text="QUEUE"
             android:textColor="@color/white"
-            android:textSize="@dimen/_20ssp"
+            android:textSize="@dimen/_18ssp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,6 +39,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
                 android:layout_marginBottom="20dp"
+                android:textAlignment="center"
+                android:gravity="center"
                 android:layout_weight="450"
                 android:text="@string/name"
                 android:textColor="#66b2b2"
@@ -72,25 +74,27 @@
                 android:text="Status" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
                 android:id="@+id/index"
-                android:gravity="center"
+                android:layout_width="@dimen/_280sdp"
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:text="@string/not_found_in_queue" />
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text="@string/not_found_in_queue"
+                android:textFontWeight="460"
+                android:textSize="16sp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
+                android:layout_marginHorizontal="@dimen/_20sdp"
                 android:id="@+id/time"
                 android:gravity="center"
                 android:layout_margin="5dp"
                 android:textSize="16sp"
-                android:textStyle="bold"
+                android:textFontWeight="460"
                 android:text="Time" />
 
         </LinearLayout>
@@ -103,7 +107,7 @@
             android:text="Register"
             android:height="75dp"
             android:layout_marginHorizontal="@dimen/_30sdp"
-            android:textSize="@dimen/_14sdp"
+            android:textSize="@dimen/_15sdp"
             android:textColor="@color/white"
             app:neumorph_backgroundColor="#66b2b2"
             style="@style/Widget.Neumorph.Button"
@@ -116,14 +120,14 @@
             style="@style/Widget.Neumorph.Button"
             android:layout_height="wrap_content"
             android:height="75dp"
+            android:layout_marginHorizontal="@dimen/_30sdp"
             android:textColor="@color/white"
             app:neumorph_backgroundColor="#66b2b2"
             android:text="Scan"
+            android:textSize="@dimen/_15sdp"
             android:visibility="gone"
             android:id="@+id/scanBtn"/>
 
     </LinearLayout>
-
-
 
 </layout>
