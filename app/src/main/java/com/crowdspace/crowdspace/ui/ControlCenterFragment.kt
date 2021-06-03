@@ -138,7 +138,7 @@ class ControlCenterFragment : Fragment() {
             TimePickerDialog(requireContext(), { _, hour, minute ->
                 val pickedDateTime = Calendar.getInstance()
                 pickedDateTime.set(year, month, day, hour, minute)
-                val till = SimpleDateFormat("HH:mm:ss EEE MMM dd").format(pickedDateTime.time)
+                val till = SimpleDateFormat("HH:mm:ss EEE dd MMM ").format(pickedDateTime.time)
                 hideButtons()
                 val doc = businessCollection.document(business.id.toString())
                 doc.update("status", status, "till", till).addOnFailureListener {

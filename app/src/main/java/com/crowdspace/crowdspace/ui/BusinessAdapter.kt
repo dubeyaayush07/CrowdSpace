@@ -1,5 +1,6 @@
 package com.crowdspace.crowdspace.ui
 
+import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,18 +42,24 @@ class BusinessAdapter(private val onClickListener: OnClickListener): RecyclerVie
         val status: TextView = itemView.findViewById(R.id.status)
         val size: TextView = itemView.findViewById(R.id.queueSize)
         val waitingTime: TextView = itemView.findViewById(R.id.textView9)
+        val waitingTimeTxt: TextView = itemView.findViewById(R.id.textView8)
         val time: TextView = itemView.findViewById(R.id.time)
 
         fun bind(item: Business, onClickListener: OnClickListener) {
             businessName.text = item.name
             status.text = item.status
             size.text = "Queue Size ${item.queue?.size.toString()}"
-            waitingTime.text = "${item.queue?.size?.times(item.avgTime!!.toInt())} Minutes"
+
 
             if (item.status == "closed") {
                 time.text = "Opening Time\n${item.till}"
+                waitingTime.visibility = View.INVISIBLE
+                waitingTimeTxt.visibility = View.INVISIBLE
             } else {
                 time.text = "Closing Time\n${item.till}"
+                waitingTime.visibility = View.VISIBLE
+                waitingTimeTxt.visibility = View.VISIBLE
+                waitingTime.text = "${item.queue?.size?.times(item.avgTime!!.toInt())} Minutes"
             }
 
 

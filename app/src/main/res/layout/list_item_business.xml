@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Clinic:"
+                    android:text="Clinic: "
                     android:textSize="14sp"
                     app:layout_constraintStart_toEndOf="@+id/queueSize"
                     app:layout_constraintTop_toBottomOf="@+id/business_name" />
