@@ -7,40 +7,38 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/card_gradient"
+        android:background="#f0f2f5"
         tools:context=".MainFragment">
 
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:text="@string/crowdspace"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="40dp"
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:paddingTop="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.454"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.566" />
-
-        <soup.neumorphism.NeumorphImageView
-            android:id="@+id/imageView"
-            android:layout_width="246dp"
-            android:layout_height="216dp"
-            app:neumorph_shadowColorLight="#79d4d4"
-
+            app:layout_constraintVertical_bias="0.332"
             app:neumorph_shadowColorDark="#539090"
-            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:neumorph_shadowColorLight="#79d4d4"
+            app:srcCompat="@drawable/cslogo2" />
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/loading_bar2"
+            style="@style/SpinKitView.Wave"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="64dp"
+            app:SpinKit_Color="#66b2b2"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/logo" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
