@@ -37,6 +37,7 @@
             app:itemIconTint="@color/white"
             app:itemTextAppearanceActive="@color/white"
             app:itemRippleColor="@color/white"
+            app:itemTextColor="@color/white"
             app:menu="@menu/menu_bottom_main"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
