@@ -56,6 +56,10 @@ class UserFragment : Fragment() {
         view.findViewById<NeumorphCardView>(R.id.cardYoga).setOnClickListener {
             findNavController().navigate(UserFragmentDirections.actionUserFragmentToFormListFragment(false))
         }
+
+        view.findViewById<NeumorphCardView>(R.id.cardRun).setOnClickListener {
+            findNavController().navigate(UserFragmentDirections.actionUserFragmentToContactFragment())
+        }
     }
 
 

@@ -147,7 +147,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_4sdp"
-                            android:text="Previous Data"
+                            android:text="Contact Us"
                             android:textColor="@color/primary_text"
                             android:textSize="@dimen/_14ssp"
                             android:textStyle="bold"/>

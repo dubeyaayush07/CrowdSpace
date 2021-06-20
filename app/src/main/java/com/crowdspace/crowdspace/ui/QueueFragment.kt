@@ -22,6 +22,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.zxing.integration.android.IntentIntegrator
@@ -33,7 +34,8 @@ class QueueFragment : Fragment() {
     private lateinit var binding: FragmentQueueBinding
     private lateinit  var business: Business
     private lateinit var collection: CollectionReference
-    private var formId: String = ""
+    private var formId: String = "none"
+    private lateinit var registration: ListenerRegistration
 
 
     companion object {
@@ -62,8 +64,11 @@ class QueueFragment : Fragment() {
                     val objects = it.toObjects(Form::class.java)
                     if (objects.size > 0) {
                         formId = objects[0].id.toString()
+                        checkIndex(formId)
+                    } else {
+                        formId = ""
+                        checkIndex(formId)
                     }
-                    checkIndex(formId)
                 }
         setup()
 
@@ -78,13 +83,13 @@ class QueueFragment : Fragment() {
 
 
         val docRef = collection.document(business.id.toString())
-        docRef.addSnapshotListener { snapshot, e ->
+        registration = docRef.addSnapshotListener { snapshot, e ->
             if (e != null) {
                 Log.w(TAG, "Listen failed.", e)
                 return@addSnapshotListener
             }
 
-            if (snapshot != null && snapshot.exists() && !formId.isBlank()) {
+            if (snapshot != null && snapshot.exists() && formId != "none") {
                 business = snapshot.toObject(Business::class.java)!!
                 checkIndex(formId)
 
@@ -94,6 +99,11 @@ class QueueFragment : Fragment() {
         }
 
 
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        registration.remove()
     }
 
     private fun setup() {

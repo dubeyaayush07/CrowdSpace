@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
+import android.telephony.SmsManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +23,7 @@ import com.crowdspace.crowdspace.model.Form
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.zxing.BarcodeFormat
@@ -45,12 +47,20 @@ class ControlCenterFragment : Fragment() {
     private lateinit  var business: Business
     private lateinit var formCollection: CollectionReference
     private lateinit var businessCollection: CollectionReference
+    private lateinit var registration: ListenerRegistration
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_control_center, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_control_center,
+            container,
+            false
+        )
         val bottomNavigationView: BottomNavigationView =
                 requireActivity().findViewById(R.id.bottomNavView)
         bottomNavigationView.visibility = View.GONE
@@ -78,9 +88,16 @@ class ControlCenterFragment : Fragment() {
         binding.next.setOnClickListener {
             val doc = businessCollection.document(business.id.toString())
             val uid = business.queue?.get(0)
+            var notify = ""
+            if (business.queue?.size!! >= 4) {
+                notify = business.queue?.get(3).toString()
+            }
             hideButtons()
             doc.update("queue", FieldValue.arrayRemove(uid), "status", "open").addOnSuccessListener {
                 formCollection.document(uid.toString()).update("active", false)
+                if (notify.isNotBlank()) {
+                    sendAlert(notify)
+                }
             }.addOnFailureListener {
                 Toast.makeText(context, "Operation Failed Please Try Again", Toast.LENGTH_LONG).show()
                 update()
@@ -88,15 +105,23 @@ class ControlCenterFragment : Fragment() {
         }
 
         binding.viewQueue.setOnClickListener {
-            findNavController().navigate(ControlCenterFragmentDirections.actionControlCenterFragmentToQueueFormsFragment(business))
+            findNavController().navigate(
+                ControlCenterFragmentDirections.actionControlCenterFragmentToQueueFormsFragment(
+                    business
+                )
+            )
         }
 
         binding.addOffline.setOnClickListener {
-            findNavController().navigate(ControlCenterFragmentDirections.actionControlCenterFragmentToOfflineFormFragment(business))
+            findNavController().navigate(
+                ControlCenterFragmentDirections.actionControlCenterFragmentToOfflineFormFragment(
+                    business
+                )
+            )
         }
 
         val docRef = businessCollection.document(business.id.toString())
-        docRef.addSnapshotListener { snapshot, e ->
+        registration = docRef.addSnapshotListener { snapshot, e ->
             if (e != null) {
                 Log.w(QueueFragment.TAG, "Listen failed.", e)
                 return@addSnapshotListener
@@ -126,6 +151,23 @@ class ControlCenterFragment : Fragment() {
 
     }
 
+    private fun sendAlert(notify: String) {
+        formCollection.document(notify).get().addOnSuccessListener {
+            val form = it.toObject(Form::class.java)
+            val smsManager: SmsManager = SmsManager.getDefault()
+            val msgArray = smsManager.divideMessage("Appointment Alert From Crowdspace \nThere are just 2 people ahead of you at ${business.name}'s clinic" +
+                    " and it will take approximately ${2 * business.avgTime!!} minutes for your turn to come. Please reach the clinic if you miss your" +
+                    " appointment you will have to register again.")
+            smsManager.sendMultipartTextMessage(form?.contact.toString(), null, msgArray, null, null)
+        }
+
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        registration.remove()
+    }
+
     private fun pickDateTime(status: String, title: String) {
         val currentDateTime = Calendar.getInstance()
         val startYear = currentDateTime.get(Calendar.YEAR)
@@ -134,19 +176,31 @@ class ControlCenterFragment : Fragment() {
         val startHour = currentDateTime.get(Calendar.HOUR_OF_DAY)
         val startMinute = currentDateTime.get(Calendar.MINUTE)
 
-        val dialog = DatePickerDialog(requireContext(), android.R.style.Theme_Material_Light_Dialog, { _, year, month, day ->
-            TimePickerDialog(requireContext(), { _, hour, minute ->
-                val pickedDateTime = Calendar.getInstance()
-                pickedDateTime.set(year, month, day, hour, minute)
-                val till = SimpleDateFormat("HH:mm:ss EEE dd MMM ").format(pickedDateTime.time)
-                hideButtons()
-                val doc = businessCollection.document(business.id.toString())
-                doc.update("status", status, "till", till).addOnFailureListener {
-                    Toast.makeText(context, "Operation Failed Please Try Again", Toast.LENGTH_LONG).show()
-                    update()
-                }
-            }, startHour, startMinute, false).show()
-        }, startYear, startMonth, startDay)
+        val dialog = DatePickerDialog(
+            requireContext(),
+            android.R.style.Theme_Material_Light_Dialog,
+            { _, year, month, day ->
+                TimePickerDialog(requireContext(), { _, hour, minute ->
+                    val pickedDateTime = Calendar.getInstance()
+                    pickedDateTime.set(year, month, day, hour, minute)
+                    val till = SimpleDateFormat("HH:mm:ss EEE dd MMM ").format(pickedDateTime.time)
+                    hideButtons()
+                    val doc = businessCollection.document(business.id.toString())
+                    doc.update("status", status, "till", till).addOnFailureListener {
+                        Toast.makeText(
+                            context,
+                            "Operation Failed Please Try Again",
+                            Toast.LENGTH_LONG
+                        )
+                            .show()
+                        update()
+                    }
+                }, startHour, startMinute, false).show()
+            },
+            startYear,
+            startMonth,
+            startDay
+        )
 
         dialog.setTitle(title)
         dialog.show()
@@ -194,7 +248,11 @@ class ControlCenterFragment : Fragment() {
                         binding.contactNumber.text = "Contact Number: ${form.contact}"
                         binding.viewInfo.visibility = View.VISIBLE
                         binding.viewInfo.setOnClickListener {
-                            findNavController().navigate(ControlCenterFragmentDirections.actionControlCenterFragmentToFormDisplayFragment(form))
+                            findNavController().navigate(
+                                ControlCenterFragmentDirections.actionControlCenterFragmentToFormDisplayFragment(
+                                    form
+                                )
+                            )
                         }
                     } else {
                         binding.currentPatient.text = "Unable to fetch patient"
@@ -211,8 +269,10 @@ class ControlCenterFragment : Fragment() {
     @Throws(WriterException::class)
     fun encodeAsBitmap(str: String?): Bitmap? {
         val result: BitMatrix = try {
-            MultiFormatWriter().encode(str,
-                    BarcodeFormat.QR_CODE, width, width, null)
+            MultiFormatWriter().encode(
+                str,
+                BarcodeFormat.QR_CODE, width, width, null
+            )
         } catch (iae: IllegalArgumentException) {
             // Unsupported format
             return null
@@ -253,9 +313,9 @@ class ControlCenterFragment : Fragment() {
             stream.flush()
             stream.close()
              uri = FileProvider.getUriForFile(
-                     requireContext(),
-                     context?.applicationContext?.packageName + ".provider",
-                     file
+                 requireContext(),
+                 context?.applicationContext?.packageName + ".provider",
+                 file
              )
         } catch (e: IOException) {
             e.printStackTrace()
