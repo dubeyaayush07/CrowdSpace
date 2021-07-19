@@ -22,14 +22,6 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS)
-                != PackageManager.PERMISSION_GRANTED) {
-            // Permission is not granted
-            // Ask for permission
-            ActivityCompat.requestPermissions(this, Array<String>(1){Manifest.permission.SEND_SMS}, 1);
-        }
-
         setupViews()
     }
 

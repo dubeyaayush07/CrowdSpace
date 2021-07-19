@@ -152,14 +152,14 @@ class ControlCenterFragment : Fragment() {
     }
 
     private fun sendAlert(notify: String) {
-        formCollection.document(notify).get().addOnSuccessListener {
-            val form = it.toObject(Form::class.java)
-            val smsManager: SmsManager = SmsManager.getDefault()
-            val msgArray = smsManager.divideMessage("Appointment Alert From Crowdspace \nThere are just 2 people ahead of you at ${business.name}'s clinic" +
-                    " and it will take approximately ${2 * business.avgTime!!} minutes for your turn to come. Please reach the clinic if you miss your" +
-                    " appointment you will have to register again.")
-            smsManager.sendMultipartTextMessage(form?.contact.toString(), null, msgArray, null, null)
-        }
+//        formCollection.document(notify).get().addOnSuccessListener {
+//            val form = it.toObject(Form::class.java)
+//            val smsManager: SmsManager = SmsManager.getDefault()
+//            val msgArray = smsManager.divideMessage("Appointment Alert From Crowdspace \nThere are just 2 people ahead of you at ${business.name}'s clinic" +
+//                    " and it will take approximately ${2 * business.avgTime!!} minutes for your turn to come. Please reach the clinic if you miss your" +
+//                    " appointment you will have to register again.")
+//            smsManager.sendMultipartTextMessage(form?.contact.toString(), null, msgArray, null, null)
+//        }
 
     }
 
